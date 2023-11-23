@@ -7,8 +7,7 @@ def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=
 
     Parameters:
     - duration: Duration of the signal in seconds.
-    - min_amplitude: Minimum amplitude of the signal (default is 0.5).
-    - max_amplitude: Maximum amplitude of the signal (default is 1).
+    - max_amplitude: amplitude of the signal (default is 1).
     - frequency: Frequency of the signal in Hertz (default is 1).
     - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
 
