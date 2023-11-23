@@ -26,8 +26,9 @@ def generate_labled_signals_list():
                             signals_list.append([time, rectangle_signal, duration_label, amplitude_label, frequency_label, sampling_rate_label, offset_label, lable_label])     
     return signals_list
 
-def generate_labled_signal_with_noise_list(): 
-    noise_amplitude = input('noise_amplitude')
+def generate_labled_signal_with_noise_list():
+    noise_signals_list = [] 
+    noise_amplitude = float(input('noise_amplitude'))
     signals_list = generate_labled_signals_list()
     # Durchlaufe jedes Element in der Liste
     for signal_data in signals_list:
@@ -40,7 +41,8 @@ def generate_labled_signal_with_noise_list():
         # Aktualisiere die Werte im ursprünglichen Signal-Datenpunkt
         signal_data[1] = noise_signal
         signal_data[-1] = label
+        noise_signals_list.append(signal_data)
 
-    return signals_list
+    return noise_signals_list
 
 print(generate_labled_signal_with_noise_list())
