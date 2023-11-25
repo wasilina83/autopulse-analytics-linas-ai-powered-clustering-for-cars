@@ -2,13 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from siglanGen import generate_rectangle_signal, generate_signal_with_noise
 
-def generate_labled_signals_list(): 
+def generate_labled_signals_list(some_to_input= None):
     signals_list = []
-    dur_min, dur_max, dur_step = map(int, input('dur_min, dur_max, dur_step').split(','))
-    amp_min, amp_max, amp_step = map(int, input('amp_min, amp_max, amp_step').split(','))
-    fre_min, fre_max, fre_step = map(int, input('fre_min, fre_max, fre_step').split(','))
-    samp_min, samp_max, samp_step = map(int, input('samp_min, samp_max, samp_step').split(','))
-    of_min, of_max, of_step = map(int, input('of_min, of_max, of_step').split(','))
+    if some_to_input != None:    
+        dur_min, dur_max, dur_step = map(int, input('dur_min, dur_max, dur_step').split(','))
+        amp_min, amp_max, amp_step = map(int, input('amp_min, amp_max, amp_step').split(','))
+        fre_min, fre_max, fre_step = map(int, input('fre_min, fre_max, fre_step').split(','))
+        samp_min, samp_max, samp_step = map(int, input('samp_min, samp_max, samp_step').split(','))
+        of_min, of_max, of_step = map(int, input('of_min, of_max, of_step').split(','))
+    else:
+        dur_min, dur_max, dur_step = [1,6,1]
+        amp_min, amp_max, amp_step = [1,6,1]
+        fre_min, fre_max, fre_step = [1,6,1]
+        samp_min, samp_max, samp_step = [1000,2000,500]
+        of_min, of_max, of_step = [0,3,1] 
     for duration in range(dur_min, dur_max, dur_step):
         for amplitude in range(amp_min, amp_max, amp_step):
             for frequency in range(fre_min, fre_max, fre_step):
@@ -26,10 +33,14 @@ def generate_labled_signals_list():
                             signals_list.append([time, rectangle_signal, duration_label, amplitude_label, frequency_label, sampling_rate_label, offset_label, lable_label])     
     return signals_list
 
-def generate_labled_signal_with_noise_list():
+def generate_labled_signal_with_noise_list(some_to_input = None):
     noise_signals_list = [] 
-    noise_amplitude = float(input('noise_amplitude'))
-    signals_list = generate_labled_signals_list()
+    if some_to_input != None:
+        noise_amplitude = float(input('noise_amplitude'))
+        signals_list = generate_labled_signals_list('foobar')
+    else:
+        noise_amplitude = np.random.randn(0,1)
+        signals_list = generate_labled_signals_list()
     # Durchlaufe jedes Element in der Liste
     for signal_data in signals_list:
     # Extrahiere die Werte
