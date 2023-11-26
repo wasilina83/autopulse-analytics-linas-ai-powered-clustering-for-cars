@@ -1,0 +1,65 @@
+USER_THEMES = {
+    "wa4null": {
+        "type": "light",
+        "colors": {
+            "primary": "#735aff",
+            "secondary": "#858e96",
+            "success": "#1e0096",
+            "info": "#0046f0",
+            "warning": "#ff8040",
+            "danger": "#e1031e",
+            "light": "#23ffc3",
+            "dark": "#1e0096",
+            "bg": "#fcfcfc",
+            "fg": "#1e0096",
+            "selectbg": "#735aff",
+            "selectfg": "#ffffff",
+            "border": "#00c8ff",
+            "inputfg": "#1e0096",
+            "inputbg": "#fcfcfc",
+            "active": "#735aff"
+        }
+    },
+    "aw4null": {
+        "type": "light",
+        "colors": {
+            "primary": "#735aff",
+            "secondary": "#1e0096",
+            "success": "#0046f0",
+            "info": "#00c8ff",
+            "warning": "#ff8040",
+            "danger": "#f5010a",
+            "light": "#23ffc3",
+            "dark": "#1e0096",
+            "bg": "#ffffff",
+            "fg": "#0046f0",
+            "selectbg": "#1e0096",
+            "selectfg": "#ffffff",
+            "border": "#23ffc3",
+            "inputfg": "#0046f0",
+            "inputbg": "#fff",
+            "active": "#23ffc3"
+        }
+    },
+    "new": {
+        "type": "light",
+        "colors": {
+            "primary": "#4582ec",
+            "secondary": "#adb5bd",
+            "success": "#02b875",
+            "info": "#17a2b8",
+            "warning": "#f0ad4e",
+            "danger": "#d9534f",
+            "light": "#F8F9FA",
+            "dark": "#343A40",
+            "bg": "#ffffff",
+            "fg": "#343a40",
+            "selectbg": "#adb5bd",
+            "selectfg": "#ffffff",
+            "border": "#bfbfbf",
+            "inputfg": "#343a40",
+            "inputbg": "#fff",
+            "active": "#e5e5e5"
+        }
+    }
+}

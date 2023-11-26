@@ -57,4 +57,4 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
 
     return noise_signals_list
 
-print(generate_labled_signal_with_noise_list(sig.generate_triangle_signal, None))
+#print(generate_labled_signal_with_noise_list(sig.generate_triangle_signal, None))

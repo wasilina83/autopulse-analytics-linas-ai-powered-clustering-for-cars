@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from random import seed, random
 
 def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
     """
@@ -24,7 +25,7 @@ def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=
 
     return time, signal
 
-def generate_step_signal(duration, amplitude=1, sampling_rate=1000, offset=0):
+def generate_step_signal(duration, amplitude=1, frequency=10, sampling_rate=1000, offset=0):
     """
     Generate a step signal.
 
@@ -103,5 +104,24 @@ def generate_signal_with_noise(time, signal, noise_amplitude = .2):
     return time, signal_with_noise
 
 
+def generate_signal(time, signal):
+    # if randomize == None:
+    # signal_function = signal_functions.get(signal_type)
+    # duration = int(random()*10)
+    # amplitude= int(random()*10)
+    # sampling_rate = int(random()*100*1000) 
+    # offset= random()*10
+    fig, ax = plt.subplots(figsize=(5, 4))
+    ax.plot(time, signal, label='Your Signal')
+    ax.set_title('Original Signal vs Signal with White Noise')
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Amplitude')
+    ax.legend()
+    return fig
 
-
+signal_functions = {
+    "Rechteck": generate_rectangle_signal,
+    "Sprung": generate_step_signal,
+    "Dreieck": generate_triangle_signal,
+    "Sinus":generate_sine_signal
+    }
