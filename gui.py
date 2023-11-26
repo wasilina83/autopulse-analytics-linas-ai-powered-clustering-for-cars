@@ -57,7 +57,7 @@ class SignalClassifierGUI:
 
         # Button
         self.button_generate_signals = ttk.Button(master, text="Generate Signals", command=self.generate_signals, bootstyle=(SUCCESS, OUTLINE) )
-        self.button_generate_signals.grid(row=7, column=2, columnspan=2, pady=10)
+        self.button_generate_signals.grid(row=7, column=1, columnspan=2, pady=10)
         
         # Leinwand für das Diagramm
         self.frame = ttk.Frame(master)
