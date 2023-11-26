@@ -24,6 +24,64 @@ def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=
 
     return time, signal
 
+def generate_step_signal(duration, amplitude=1, sampling_rate=1000, offset=0):
+    """
+    Generate a step signal.
+
+    Parameters:
+    - duration: Duration of the signal in seconds.
+    - amplitude: Amplitude of the signal (default is 1).
+    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
+    - offset: Offset of the signal (default is 0).
+
+    Returns:
+    - time: Time array for the signal.
+    - signal: Generated step signal.
+    """
+    time = np.arange(0, duration, 1/sampling_rate)
+    signal = offset + amplitude * np.heaviside(time, 1)
+    return time, signal
+
+def generate_sine_signal(duration, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
+    """
+    Generate a sine signal.
+
+    Parameters:
+    - duration: Duration of the signal in seconds.
+    - amplitude: Amplitude of the signal (default is 1).
+    - frequency: Frequency of the signal in Hertz (default is 1).
+    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
+    - offset: Offset of the signal (default is 0).
+
+    Returns:
+    - time: Time array for the signal.
+    - signal: Generated sine signal.
+    """
+    time = np.arange(0, duration, 1/sampling_rate)
+    signal = offset + amplitude * np.sin(2 * np.pi * frequency * time)
+    return time, signal
+
+def generate_triangle_signal(duration, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
+    """
+    Generate a triangle signal.
+
+    Parameters:
+    - duration: Duration of the signal in seconds.
+    - amplitude: Amplitude of the signal (default is 1).
+    - frequency: Frequency of the signal in Hertz (default is 1).
+    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
+    - offset: Offset of the signal (default is 0).
+
+    Returns:
+    - time: Time array for the signal.
+    - signal: Generated triangle signal.
+    """
+    time = np.arange(0, duration, 1/sampling_rate)
+    signal = offset + amplitude * np.abs(2 * (time * frequency - np.floor(0.5 + time * frequency)))
+    return time, signal
+
+
+
 def generate_signal_with_noise(time, signal, noise_amplitude = .2):
     """
     Added white noise to a generated signal.

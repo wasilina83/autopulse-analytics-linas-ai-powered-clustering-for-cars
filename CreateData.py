@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from siglanGen import generate_rectangle_signal, generate_signal_with_noise
+from siglanGen import generate_signal_with_noise
+import siglanGen as sig
 
-def generate_labled_signals_list(some_to_input= None):
+def generate_labled_signals_list(signal_function, some_to_input= None):
     signals_list = []
     if some_to_input != None:    
         dur_min, dur_max, dur_step = map(int, input('dur_min, dur_max, dur_step').split(','))
@@ -22,7 +23,7 @@ def generate_labled_signals_list(some_to_input= None):
                 for sampling_rate in range(samp_min, samp_max, samp_step):
                     for offset in range(of_min, of_max, of_step):
                         # Generiere Rechtecksignal
-                            time, rectangle_signal = generate_rectangle_signal(duration, amplitude, frequency, sampling_rate, offset)
+                            time, rectangle_signal = signal_function(duration, amplitude, frequency, sampling_rate, offset)
                         # Füge das Signal der Liste hinzu, zusammen mit einem Label
                             duration_label = f'Signal-duration {duration}'
                             amplitude_label = f'Signal-amplitude {amplitude}'
@@ -33,14 +34,14 @@ def generate_labled_signals_list(some_to_input= None):
                             signals_list.append([time, rectangle_signal, duration_label, amplitude_label, frequency_label, sampling_rate_label, offset_label, lable_label])     
     return signals_list
 
-def generate_labled_signal_with_noise_list(some_to_input = None):
+def generate_labled_signal_with_noise_list(signal_function,some_to_input = None):
     noise_signals_list = [] 
     if some_to_input != None:
         noise_amplitude = float(input('noise_amplitude'))
-        signals_list = generate_labled_signals_list('foobar')
+        signals_list = generate_labled_signals_list(signal_function, 'foobar')
     else:
         noise_amplitude = np.random.randn(0,1)
-        signals_list = generate_labled_signals_list()
+        signals_list = generate_labled_signals_list(signal_function, some_to_input)
     # Durchlaufe jedes Element in der Liste
     for signal_data in signals_list:
     # Extrahiere die Werte
@@ -56,4 +57,4 @@ def generate_labled_signal_with_noise_list(some_to_input = None):
 
     return noise_signals_list
 
-print(generate_labled_signal_with_noise_list())
+print(generate_labled_signal_with_noise_list(sig.generate_triangle_signal, None))
