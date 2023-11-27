@@ -64,7 +64,7 @@ class SignalClassifierGUI:
         self.frame.grid(row=8, column=0, columnspan=2)
         self.canvas = FigureCanvasTkAgg(Figure(), master=self.frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=8, column=3)
+        self.canvas.get_tk_widget().grid(row=8, column=8)
         #self.canvas.get_tk_widget().update_idletasks()
         #width, height = self.canvas.get_tk_widget().winfo_width(), self.canvas.get_tk_widget().winfo_height()
         #self.canvas.get_tk_widget().place(in_=background_label, anchor="center", relx=.5, rely=.5, width=width, height=height)
@@ -82,12 +82,16 @@ class SignalClassifierGUI:
         self.canvas.get_tk_widget().destroy
         self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=2, column=0, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
+        self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
      
     
 def main():
-    root = ttk.Window(themename="aw4null")
-    root.geometry("800x500")
+    root = Tk()
+    root.geometry("1000x800")
+    root.attributes("-fullscreen", True)
+    root.bind("<F11>", lambda event: root.attributes("-fullscreen",
+                                        not root.attributes("-fullscreen")))
+    root.bind("<Escape>", lambda event: root.attributes("-fullscreen", False))
     # Hintergrundbild einbinden
     background_image = PhotoImage(file="images/bild-hintergrund-zitat.png")
     background = Label(root, image=background_image)
