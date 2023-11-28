@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import seed, random
 
-def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
+def generate_rectangle_signal(duration=2, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
     """
     Generate a rectangular signal.
 
@@ -25,7 +25,7 @@ def generate_rectangle_signal(duration, amplitude=1, frequency=1, sampling_rate=
 
     return time, signal
 
-def generate_step_signal(duration, amplitude=1, frequency=10, sampling_rate=1000, offset=0):
+def generate_step_signal(duration=2, amplitude=1, frequency=10, sampling_rate=1000, offset=0):
     """
     Generate a step signal.
 
@@ -62,7 +62,7 @@ def generate_sine_signal(duration, amplitude=1, frequency=1, sampling_rate=1000,
     signal = offset + amplitude * np.sin(2 * np.pi * frequency * time)
     return time, signal
 
-def generate_triangle_signal(duration, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
+def generate_triangle_signal(duration=2, amplitude=1, frequency=1, sampling_rate=1000, offset=0):
     """
     Generate a triangle signal.
 
@@ -96,7 +96,7 @@ def generate_signal_with_noise(time, signal, noise_amplitude = .2):
     - time: Time array for the signal.
     - signal_with_noise: Generated rectangular signal with added white noise.
     """
-
+   
     white_noise = noise_amplitude * np.random.normal(size=len(time))
     # Add white noise to the signal
     signal_with_noise = signal + white_noise

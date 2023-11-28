@@ -40,7 +40,8 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
         noise_amplitude = float(input('noise_amplitude'))
         signals_list = generate_labled_signals_list(signal_function, 'foobar')
     else:
-        noise_amplitude = np.random.randn(0,1)
+        noise_amplitude = .02
+        
         signals_list = generate_labled_signals_list(signal_function, some_to_input)
     # Durchlaufe jedes Element in der Liste
     for signal_data in signals_list:
