@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from siglanGen import generate_signal_with_noise
+from siglanGen import *
 import siglanGen as sig
 
 def generate_labled_signals_list(signal_function, some_to_input= None):
@@ -53,8 +53,10 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
         # Aktualisiere die Werte im ursprünglichen Signal-Datenpunkt
         signal_data[1] = noise_signal
         signal_data[-1] = label
+        signal_data[0] = time 
         noise_signals_list.append(signal_data)
 
     return noise_signals_list
 
-#print(generate_labled_signal_with_noise_list(sig.generate_triangle_signal, None))
+with open("file.txt", "w") as f:
+    f.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))

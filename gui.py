@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from siglanGen import generate_signal, signal_functions
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
+import tkinter.ttk as ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from PIL import Image, ImageTk
@@ -56,7 +55,7 @@ class SignalClassifierGUI:
         self.combo_signal_type.set("^.^")
 
         # Button
-        self.button_generate_signals = ttk.Button(master, text="Generate Signals", command=self.generate_signals, bootstyle=(SUCCESS, OUTLINE) )
+        self.button_generate_signals = ttk.Button(master, text="Generate Signals", command=self.generate_signals )
         self.button_generate_signals.grid(row=7, column=1, columnspan=2, pady=10)
         
         # Leinwand für das Diagramm
