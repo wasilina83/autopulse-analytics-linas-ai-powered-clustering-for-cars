@@ -1,0 +1,450 @@
+[[array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.00376272,  0.98579391,  0.98847191, ..., -0.97635723,
+         -1.02518626, -1.00260104])
+  'Signal-amplitude 1' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.9789171 ,  1.9680186 ,  2.00186442, ..., -0.00736598,
+         -0.00690965,  0.0457735 ])
+  'Signal-amplitude 1' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.98416069, 2.98996235, 3.036263  , ..., 0.99671648, 1.00744719,
+         1.01970665])
+  'Signal-amplitude 1' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.00219181,  1.0452341 ,  1.02313588, ..., -1.02094069,
+         -1.01100122, -1.01766592])
+  'Signal-amplitude 1' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00182589,  2.01878923,  1.95356902, ..., -0.00517674,
+          0.02861703, -0.02289167])
+  'Signal-amplitude 1' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([2.01618166, 2.98384675, 2.99277883, ..., 0.98120395, 0.98742785,
+         0.99109196])
+  'Signal-amplitude 1' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.00269443,  1.01054124,  0.98888311, ..., -1.01973675,
+         -1.00795256, -1.01750257])
+  'Signal-amplitude 1' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.99371155,  2.00014452,  2.01095969, ...,  0.01163651,
+         -0.00949921, -0.00847237])
+  'Signal-amplitude 1' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([2.03402081, 3.00520122, 3.00703516, ..., 1.01700267, 0.99158994,
+         1.00636204])
+  'Signal-amplitude 1' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.00365057,  1.00152196,  0.99463716, ..., -0.99769895,
+         -1.03299076, -1.00407538])
+  'Signal-amplitude 1' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.01985346,  1.97193889,  1.9968533 , ...,  0.02922316,
+         -0.00898886, -0.0096761 ])
+  'Signal-amplitude 1' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([2.00364171, 2.97721858, 2.99407809, ..., 1.00853696, 1.01975295,
+         1.02763628])
+  'Signal-amplitude 1' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.01486271,  0.99485536,  0.98594682, ..., -0.99913659,
+         -0.95825556, -0.9805388 ])
+  'Signal-amplitude 1' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.01803325e+00, 1.97545436e+00, 1.96474100e+00, ...,
+         4.85659987e-02, 2.42338929e-02, 4.77133056e-04])
+  'Signal-amplitude 1' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([2.02907921, 2.9892794 , 2.99187669, ..., 1.01348824, 0.97945651,
+         1.00911721])
+  'Signal-amplitude 1' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.05112588,  1.97640411,  1.99459391, ..., -1.9881329 ,
+         -2.00085609, -2.00232812])
+  'Signal-amplitude 2' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00881355,  3.00142611,  3.00261954, ..., -1.00946965,
+         -0.98699346, -0.99259043])
+  'Signal-amplitude 2' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.98436172, 3.96801534, 3.9868068 , ..., 0.01060889, 0.0469144 ,
+         0.01215151])
+  'Signal-amplitude 2' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.00528873,  2.03234406,  1.99811182, ..., -1.96062475,
+         -1.98390496, -1.99753113])
+  'Signal-amplitude 2' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.01106666,  2.95584977,  2.99887313, ..., -0.96772355,
+         -1.02049467, -0.98838293])
+  'Signal-amplitude 2' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.963399  , 4.00559939, 3.99193451, ..., 0.01186375, 0.01632577,
+         0.00635892])
+  'Signal-amplitude 2' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.00345489,  1.99478124,  2.01344646, ..., -1.98787873,
+         -2.00168683, -2.00697337])
+  'Signal-amplitude 2' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.9867943 ,  3.00357997,  2.9771417 , ..., -0.98331976,
+         -1.01013779, -1.01020425])
+  'Signal-amplitude 2' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.99825243e+00, 3.97627872e+00, 4.01197370e+00, ...,
+         6.32835127e-04, 6.79752626e-03, 3.99945238e-02])
+  'Signal-amplitude 2' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.00538418,  1.98701071,  1.96302816, ..., -2.01940069,
+         -2.01265697, -2.05802045])
+  'Signal-amplitude 2' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00483299,  2.98511896,  2.94992237, ..., -1.05513638,
+         -0.98755635, -1.00797292])
+  'Signal-amplitude 2' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.97938072e+00,  3.99343131e+00,  4.02409616e+00, ...,
+         -4.31084004e-02,  9.19626772e-04,  3.00021620e-02])
+  'Signal-amplitude 2' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.01453233,  1.99365443,  2.01058607, ..., -2.01222236,
+         -2.01103389, -1.9905309 ])
+  'Signal-amplitude 2' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.98093638,  2.98997799,  2.98614409, ..., -0.98857768,
+         -1.01134117, -0.98778943])
+  'Signal-amplitude 2' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([1.99923113, 3.97766514, 4.00548356, ..., 0.02062437, 0.01131774,
+         0.00826235])
+  'Signal-amplitude 2' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.01332365,  2.99416909,  2.9991885 , ..., -2.98119601,
+         -3.0220058 , -3.01947021])
+  'Signal-amplitude 3' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.01007305,  3.97209594,  3.96081729, ..., -2.01606855,
+         -2.00742181, -1.98419028])
+  'Signal-amplitude 3' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.01536212,  5.01890049,  4.9654225 , ..., -1.02403693,
+         -0.9947779 , -1.0035159 ])
+  'Signal-amplitude 3' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-4.19601042e-04,  2.97716211e+00,  3.00118953e+00, ...,
+         -3.02661332e+00, -2.99828689e+00, -2.98608036e+00])
+  'Signal-amplitude 3' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.98942693,  3.99608907,  3.99628528, ..., -1.98944674,
+         -1.99597049, -1.97968379])
+  'Signal-amplitude 3' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.03257779,  4.97870659,  5.0006981 , ..., -0.96925314,
+         -0.96677781, -0.98585686])
+  'Signal-amplitude 3' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.01102991,  3.02360343,  2.97408762, ..., -2.99650404,
+         -2.9929425 , -2.98938446])
+  'Signal-amplitude 3' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.01729053,  4.01240509,  4.05189173, ..., -1.97742222,
+         -1.99931457, -2.00569675])
+  'Signal-amplitude 3' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.01782453,  4.98930027,  4.99675658, ..., -1.01135208,
+         -1.00090737, -1.02019202])
+  'Signal-amplitude 3' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.03797354,  3.02955693,  2.99834432, ..., -3.01509373,
+         -3.03515721, -2.95227954])
+  'Signal-amplitude 3' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.99659083,  4.03632168,  4.0119182 , ..., -1.99345274,
+         -1.97400024, -2.03958116])
+  'Signal-amplitude 3' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.98098682,  5.04291546,  4.9877843 , ..., -1.00087554,
+         -1.02682291, -0.98716803])
+  'Signal-amplitude 3' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.02978464,  2.98785375,  2.98545936, ..., -2.99713497,
+         -2.99768859, -2.98459323])
+  'Signal-amplitude 3' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.02336563,  3.96693089,  4.02721692, ..., -2.01129323,
+         -1.96010468, -2.00156886])
+  'Signal-amplitude 3' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.02458517,  5.01851269,  4.98661908, ..., -0.98884742,
+         -1.04483776, -1.02561246])
+  'Signal-amplitude 3' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.39215577e-03,  4.03858212e+00,  3.98651078e+00, ...,
+         -3.99339252e+00, -3.99344121e+00, -3.98747077e+00])
+  'Signal-amplitude 4' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00426557,  4.98805911,  5.00324045, ..., -2.99636868,
+         -2.99655431, -2.97223294])
+  'Signal-amplitude 4' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.97268707,  5.95952254,  6.01019309, ..., -1.97572451,
+         -1.97086492, -2.02320949])
+  'Signal-amplitude 4' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.00577725,  4.02898399,  3.99139983, ..., -4.01481823,
+         -3.97302528, -4.00379497])
+  'Signal-amplitude 4' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00178989,  5.01876615,  4.9780255 , ..., -3.0184683 ,
+         -2.9963156 , -2.97846581])
+  'Signal-amplitude 4' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.97861468,  5.97085053,  5.9882328 , ..., -1.97164977,
+         -1.98125038, -1.98951673])
+  'Signal-amplitude 4' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.01061746,  3.96562011,  3.99936159, ..., -4.00948223,
+         -4.00340632, -3.95781708])
+  'Signal-amplitude 4' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.96666524,  5.00019137,  5.00047351, ..., -2.97430509,
+         -3.00331877, -3.00705999])
+  'Signal-amplitude 4' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.01249365,  5.98946483,  6.0096684 , ..., -1.98287832,
+         -2.00722267, -2.00040532])
+  'Signal-amplitude 4' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.01481343,  3.99622847,  3.95845973, ..., -4.00039546,
+         -3.99184897, -3.99858876])
+  'Signal-amplitude 4' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00286651,  5.01678777,  4.97228734, ..., -2.97951694,
+         -3.01091271, -2.97158263])
+  'Signal-amplitude 4' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.03913432,  6.00442833,  5.96511855, ..., -2.01538285,
+         -2.02013483, -2.01204429])
+  'Signal-amplitude 4' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.0049156 ,  4.01747876,  4.0063088 , ..., -4.00361855,
+         -4.0048988 , -3.99907727])
+  'Signal-amplitude 4' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.97549175,  5.00616965,  4.9933195 , ..., -2.99152252,
+         -3.02744626, -3.00209338])
+  'Signal-amplitude 4' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.00498746,  6.01932716,  5.96963606, ..., -1.98440838,
+         -1.9819413 , -2.00206447])
+  'Signal-amplitude 4' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.01735813,  4.97352447,  5.03639553, ..., -5.01951306,
+         -5.01630639, -4.99633558])
+  'Signal-amplitude 5' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.05995178,  5.96651177,  5.99984219, ..., -4.0038922 ,
+         -4.00586542, -4.01014423])
+  'Signal-amplitude 5' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.99108236,  7.04155779,  6.99605767, ..., -2.98926347,
+         -3.00884107, -3.0046879 ])
+  'Signal-amplitude 5' 'Signal-frequency 1' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.0211933 ,  5.00776007,  5.00703519, ..., -5.00412067,
+         -4.98430233, -4.99242955])
+  'Signal-amplitude 5' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.99900279,  6.01702585,  5.986429  , ..., -3.98945934,
+         -3.97736357, -3.9879497 ])
+  'Signal-amplitude 5' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 2.03682293,  7.02990598,  7.00809675, ..., -2.99128755,
+         -3.02216182, -2.9871721 ])
+  'Signal-amplitude 5' 'Signal-frequency 2' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.01455809,  5.02273128,  5.03198091, ..., -5.01133564,
+         -4.98437065, -5.02914721])
+  'Signal-amplitude 5' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.00089047,  6.0109769 ,  5.97798179, ..., -3.99384004,
+         -3.99774636, -3.97091534])
+  'Signal-amplitude 5' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.96348718,  6.95033491,  6.99224744, ..., -3.01456995,
+         -3.01256108, -2.99740486])
+  'Signal-amplitude 5' 'Signal-frequency 3' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([-0.01203435,  5.02480757,  5.00024861, ..., -5.01634752,
+         -5.01435476, -4.97242868])
+  'Signal-amplitude 5' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.98442558,  5.98874099,  5.95121762, ..., -3.97243821,
+         -4.03639999, -3.97323372])
+  'Signal-amplitude 5' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.9712001 ,  6.9805812 ,  7.00626115, ..., -2.99327378,
+         -2.98890975, -2.99302789])
+  'Signal-amplitude 5' 'Signal-frequency 4' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.04395612,  5.00932051,  4.9754417 , ..., -4.98158847,
+         -4.98111489, -5.00911349])
+  'Signal-amplitude 5' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 0' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 0.99386905,  6.01098486,  5.97745447, ..., -3.95909605,
+         -3.97031956, -4.02531003])
+  'Signal-amplitude 5' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 1' 'good']
+ [array([0.000e+00, 1.000e-03, 2.000e-03, ..., 9.997e+00, 9.998e+00,
+         9.999e+00])
+  array([ 1.99336343,  7.01122059,  7.01347862, ..., -3.00430841,
+         -3.01386206, -2.98780066])
+  'Signal-amplitude 5' 'Signal-frequency 5' 'Signal-sampling_rate 1000'
+  'Signal-offset 2' 'good']]
