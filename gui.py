@@ -5,6 +5,10 @@ import tkinter.ttk as ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from PIL import Image, ImageTk
+import callModel
+from tensorflow.keras.models import load_model
+import os
+import numpy as np
 
 
 class SignalClassifierGUI:
@@ -20,7 +24,10 @@ class SignalClassifierGUI:
         self.offset_var = tk.DoubleVar()
         self.signal_type_var = tk.StringVar()
     
-
+        #Prediktion
+        self.prediction_label = Label(master, text="", font=('Helvetica', 14))
+        self.prediction_label.grid(row=7, column=0, columnspan=2)
+        
         # Eigabefelder
         self.label_duration = Label(master, text="Dauer")
         self.label_duration.grid(row=1, column=0)
@@ -63,7 +70,7 @@ class SignalClassifierGUI:
         self.frame.grid(row=8, column=0, columnspan=2)
         self.canvas = FigureCanvasTkAgg(Figure(), master=self.frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=8, column=8)
+        self.canvas.get_tk_widget().grid(row=9, column=8)
         #self.canvas.get_tk_widget().update_idletasks()
         #width, height = self.canvas.get_tk_widget().winfo_width(), self.canvas.get_tk_widget().winfo_height()
         #self.canvas.get_tk_widget().place(in_=background_label, anchor="center", relx=.5, rely=.5, width=width, height=height)
@@ -82,6 +89,22 @@ class SignalClassifierGUI:
         self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
+        input_time = np.array(time) 
+        input_signal = np.array(signal)
+        model_path = os.path.join('models', 'Signalclassifier.h5')
+        # Modell laden
+        loaded_model = load_model(model_path)
+        
+        yhat = loaded_model.predict(np.array(input_time, input_signal))
+        if yhat > 0.5: 
+            answer='Predicted class is Sad'
+        else:
+            answer= f'Predicted class is Happy'
+        
+        self.prediction_label.config(text=answer)
+        
+        
+            
      
     
 def main():

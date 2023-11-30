@@ -83,7 +83,7 @@ def generate_triangle_signal(duration=2, amplitude=1, frequency=1, sampling_rate
 
 
 
-def generate_signal_with_noise(time, signal, noise_amplitude = .2):
+def add_noise_to_signal(time, signal, noise_amplitude = .2):
     """
     Added white noise to a generated signal.
 

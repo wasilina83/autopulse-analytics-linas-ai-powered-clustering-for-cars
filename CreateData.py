@@ -18,7 +18,7 @@ def generate_labled_signals_list(signal_function, some_to_input= None):
         amp_min, amp_max, amp_step = [1,6,1]
         fre_min, fre_max, fre_step = [1,6,1]
         samp_min, samp_max, samp_step = [1000,1500,500]
-        of_min, of_max, of_step = [0,3,1] 
+        of_min, of_max, of_step = [-3,3,1] 
     for duration in range(dur_min, dur_max, dur_step):
         for amplitude in range(amp_min, amp_max, amp_step):
             for frequency in range(fre_min, fre_max, fre_step):
@@ -33,7 +33,7 @@ def generate_labled_signals_list(signal_function, some_to_input= None):
                             offset_label = f'Signal-offset {offset}'
                             label = 'good'
                             signals_list.append([time, signal, amplitude_label, frequency_label, sampling_rate_label, offset_label, label])
-                            export_signal_data(time, signal, amplitude_label, frequency_label, sampling_rate_label, offset_label, label,)     
+                            export_signal_data(time, signal, amplitude_label, frequency_label, sampling_rate_label, offset_label, label, 0)     
     return np.array(signals_list, dtype=object)
 
 def generate_labled_signal_with_noise_list(signal_function,some_to_input = None):
@@ -42,7 +42,7 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
         noise_amplitude = float(input('noise_amplitude'))
         signals_list = generate_labled_signals_list(signal_function, 'foobar')
     else:
-        noise_amplitude = .02
+        noise_amplitude = .25
         
         signals_list = generate_labled_signals_list(signal_function, some_to_input)
     # Durchlaufe jedes Element in der Liste
@@ -51,12 +51,12 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
         time = signal_data[0]
         signal = signal_data[1]
         label = signal_data[-1]  # Der Label-Wert befindet sich am Ende der Liste
-        time, noise_signal = generate_signal_with_noise(time, signal, noise_amplitude)
+        time, noise_signal = add_noise_to_signal(time, signal, noise_amplitude)
         amplitude_label = signal_data[3]
         frequency_label = signal_data[4]
         sampling_rate_label = signal_data[5]
         offset_label = signal_data[6]
-        label = 'good'
+        label = 'bad'
         # Aktualisiere die Werte im ursprünglichen Signal-Datenpunkt
         signal_data[1] = noise_signal
         signal_data[-1] = label
@@ -78,7 +78,7 @@ def export_signal_data(time, signal,  amplitude_label, frequency_label, sampling
             csv_writer.writerow([x, signal[i]])
 
     # Speichere als PNG-Datei
-    png_filename = os.path.join(folder_path,  f"signals_data_{amplitude_label}_{frequency_label}_{sampling_rate_label}_{offset_label}.png")
+    png_filename = os.path.join(folder_path,  f"signals_data_{amplitude_label}_{frequency_label}_{sampling_rate_label}_{offset_label}_{noise_amplitude}.png")
     plt.figure()
     plt.plot(time, signal)  # Hier wird das erste Signal geplottet (du kannst anpassen)
     plt.savefig(png_filename)
@@ -86,8 +86,8 @@ def export_signal_data(time, signal,  amplitude_label, frequency_label, sampling
 
                         
 
-with open("file_bad.txt", "w") as f_b:
-    f_b.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))
+# with open("file_bad.txt", "w") as f_b:
+#     f_b.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))
 
-with open("file_good.txt", "w") as f_g:
-    f_g.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))
+# with open("file_good.txt", "w") as f_g:
+#     f_g.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))
