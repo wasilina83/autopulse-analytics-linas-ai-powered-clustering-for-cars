@@ -9,7 +9,8 @@ import callModel
 from tensorflow.keras.models import load_model
 import os
 import numpy as np
-
+import csv
+import pandas as pd
 
 class SignalClassifierGUI:
     def __init__(self, master):
@@ -89,19 +90,29 @@ class SignalClassifierGUI:
         self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
-        input_time = np.array(time) 
-        input_signal = np.array(signal)
         model_path = os.path.join('models', 'Signalclassifier.h5')
         # Modell laden
         loaded_model = load_model(model_path)
+        with open('csv_file.csv', 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            header = ['time', 'signal']
+            csv_writer.writerow(header)
+            for i, x in enumerate(time):
+                csv_writer.writerow([x, signal[i]])
+        data = []
+        data.append(pd.read_csv('csv_file.csv'))
+
+        yhat = loaded_model.predict(data)
+        with open('csv_pridickt.csv', 'w', newline='') as f:
+            p_writer = csv.writer(f)
+            for n in yhat:
+                p_writer.writerow([n])
+        # if yhat > 0.5: 
+        #     answer='Predicted class is Sad'
+        # else:
+        #     answer= f'Predicted class is Happy'
         
-        yhat = loaded_model.predict(np.array(input_time, input_signal))
-        if yhat > 0.5: 
-            answer='Predicted class is Sad'
-        else:
-            answer= f'Predicted class is Happy'
-        
-        self.prediction_label.config(text=answer)
+        # self.prediction_label.config(text=answer)
         
         
             

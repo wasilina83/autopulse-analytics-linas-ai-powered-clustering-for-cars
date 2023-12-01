@@ -8,7 +8,6 @@ import cv2
 import imghdr
 import numpy as np
 from matplotlib import pyplot as plt
-import glob
 from sklearn.model_selection import train_test_split
 
 
@@ -59,7 +58,7 @@ X_train, X_test, y_train, y_test = train_test_split(all_data.drop('label', axis=
 
 # Modell erstellen
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1:],)),
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 
