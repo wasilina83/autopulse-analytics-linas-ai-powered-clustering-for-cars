@@ -5,7 +5,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 import joblib
 import os
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 # Schritt 1: Dateinamen aus den Verzeichnissen holen
 good_files = [os.path.join('data/good', file) for file in os.listdir('data/good') if file.endswith('.csv')]
