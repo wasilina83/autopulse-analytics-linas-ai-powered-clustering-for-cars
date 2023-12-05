@@ -14,36 +14,58 @@ from sklearn.model_selection import train_test_split
 
  
 data_dir = 'data' 
-# not_csv_exts = ['jpeg','jpg', 'bmp', 'png']
-# for csv_class in os.listdir(data_dir):
-#     for csv_file in os.listdir(os.path.join(data_dir, csv_class)):
-#         csv_path = os.path.join(data_dir, csv_class, csv_file)
-#         try:
-#             fimg = cv2.imread(csv_path)
-#             tip = imghdr.what(csv_path)
-#             if tip in not_csv_exts:
-#                 print('CSV not in ext list {}'.format(csv_path))
-#                 os.remove(csv_path)
-#         except Exception as e: 
-#             print('Issue with CSV {}'.format(csv_path))  
+not_csv_exts = ['jpeg','jpg', 'bmp', 'png']
+for csv_class in os.listdir(data_dir):
+    for csv_file in os.listdir(os.path.join(data_dir, csv_class)):
+        csv_path = os.path.join(data_dir, csv_class, csv_file)
+        try:
+            fimg = cv2.imread(csv_path)
+            tip = imghdr.what(csv_path)
+            if tip in not_csv_exts:
+                print('CSV not in ext list {}'.format(csv_path))
+                os.remove(csv_path)
+        except Exception as e: 
+            print('Issue with CSV {}'.format(csv_path))  
 
 
 
-good_data = []
-bad_data = []
 
-for filename in os.listdir(os.path.join(data_dir, 'good')):
-    if filename.endswith('.csv'):
-        csv_path = os.path.join(data_dir, 'good', filename)
-        print(csv_path)
-        good_data.append(pd.read_csv(csv_path))
-        print(good_data)
+bad_data = pd.DataFrame()
+
+def from_file_to_good_pivot(data_dir):
+    good_data = pd.DataFrame()
+    for filename in os.listdir(os.path.join(data_dir, 'good')):
+        if filename.endswith('.csv'):
+            csv_path = os.path.join(data_dir, 'good', filename)
+            good_data = pd.concat([good_data, pd.read_csv(csv_path)])
+
+    # Duplikate entfernen (falls noch nicht entfernt)
+    good_data.drop_duplicates(subset='time', inplace=True)
+
+    # Pivot-Operation für jede 'signal'-Spalte separat durchführen
+    good_data_pivoted = good_data.pivot(index='time', columns='signal', values='signal')
+
+    # Die Multi-Index-Spalten entfernen und DataFrame neu indexieren
+
+    good_data_pivoted.reset_index(inplace=True)
+
+    print(f'good_data_pivoted: {good_data_pivoted}')
+    return good_data_pivoted
+
+
+good_data_pivoted = from_file_to_good_pivot(data_dir)
 
 for filename in os.listdir(os.path.join(data_dir, 'bad')):
     if filename.endswith('.csv'):
-        bad_data.append(pd.read_csv(os.path.join(data_dir, 'bad', filename)))
+        bad_data = pd.concat([bad_data, pd.read_csv(os.path.join(data_dir, 'bad', filename))])
+        #bad_data.drop_duplicates(subset='time', inplace=True)
+        bad_data_pivoted = bad_data.pivot_table(index='time',aggfunc='mean')
+        # Die Multi-Index-Spalten entfernen und DataFrame neu indexieren
+        good_data_pivoted.columns = good_data_pivoted.columns.droplevel(0)
+        good_data_pivoted.reset_index(inplace=True)
+print(good_data_pivoted)
 
-for df in good_data:
+for df in good_data_pivoted:
     df['label'] = 1  # 1 für "gut"
 
 for df in bad_data:
@@ -51,8 +73,12 @@ for df in bad_data:
 
 
 all_data = pd.concat(good_data + bad_data, ignore_index=True)
-for data in all_data:
-    print(data)
+# data_pivoted = all_data.pivot(index='time', columns='signal')
+
+# # Die Multi-Index-Spalten entfernen und DataFrame neu indexieren
+# data_pivoted.columns = data_pivoted.columns.droplevel(0)
+# data_pivoted.reset_index(inplace=True)
+# print(data_pivoted)
 # X_train, X_test, y_train, y_test = train_test_split(all_data.drop('label', axis=1), all_data['label'], test_size=0.2, random_state=42)
 
 # model = tf.keras.Sequential([

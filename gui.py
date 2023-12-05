@@ -11,6 +11,7 @@ import os
 import numpy as np
 import csv
 import pandas as pd
+from callModel import predict_label
 
 class SignalClassifierGUI:
     def __init__(self, master):
@@ -93,26 +94,11 @@ class SignalClassifierGUI:
         model_path = os.path.join('models', 'Signalclassifier.h5')
         # Modell laden
         loaded_model = load_model(model_path)
-        with open('csv_file.csv', 'w', newline='') as csvfile:
-            csv_writer = csv.writer(csvfile)
-            header = ['time', 'signal']
-            csv_writer.writerow(header)
-            for i, x in enumerate(time):
-                csv_writer.writerow([x, signal[i]])
-        data = []
-        data.append(pd.read_csv('csv_file.csv'))
-
-        yhat = loaded_model.predict(data)
-        with open('csv_pridickt.csv', 'w', newline='') as f:
-            p_writer = csv.writer(f)
-            for n in yhat:
-                p_writer.writerow([n])
-        # if yhat > 0.5: 
-        #     answer='Predicted class is Sad'
-        # else:
-        #     answer= f'Predicted class is Happy'
+        csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\csv_file.csv'
         
-        # self.prediction_label.config(text=answer)
+        answer= predict_label(csv_file_path)
+        print(answer)
+        self.prediction_label.config(text=answer)
         
         
             

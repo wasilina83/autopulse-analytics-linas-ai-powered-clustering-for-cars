@@ -15,8 +15,8 @@ def generate_labled_signals_list(signal_function, some_to_input= None):
         of_min, of_max, of_step = map(int, input('of_min, of_max, of_step').split(','))
     else:
         dur_min, dur_max, dur_step = [10,11,1]
-        amp_min, amp_max, amp_step = [1,6,1]
-        fre_min, fre_max, fre_step = [1,6,1]
+        amp_min, amp_max, amp_step = [1,7,1]
+        fre_min, fre_max, fre_step = [1,7,1]
         samp_min, samp_max, samp_step = [1000,1500,500]
         of_min, of_max, of_step = [-3,3,1] 
     for duration in range(dur_min, dur_max, dur_step):
@@ -42,7 +42,7 @@ def generate_labled_signal_with_noise_list(signal_function,some_to_input = None)
         noise_amplitude = float(input('noise_amplitude'))
         signals_list = generate_labled_signals_list(signal_function, 'foobar')
     else:
-        noise_amplitude = .25
+        noise_amplitude = .4
         
         signals_list = generate_labled_signals_list(signal_function, some_to_input)
     # Durchlaufe jedes Element in der Liste
@@ -85,6 +85,7 @@ def export_signal_data(time, signal,  amplitude_label, frequency_label, sampling
     plt.close()
 
                         
+#generate_labled_signal_with_noise_list(generate_rectangle_signal, None)                     
 
 # with open("file_bad.txt", "w") as f_b:
 #     f_b.write(str(generate_labled_signal_with_noise_list(generate_rectangle_signal, None)))
