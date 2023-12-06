@@ -110,8 +110,8 @@ fig.suptitle('Training Metrics', fontsize=20)
 
 
 plt.tight_layout()
-plt.show()
-plt.savefig('Signalclassifier-tain.png')
 
+plt.savefig('Signalclassifier-tain.png')
+plt.show()
 model.save(os.path.join('models','Signalclassifier.h5'))
      
