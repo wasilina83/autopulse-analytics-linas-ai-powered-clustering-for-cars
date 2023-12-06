@@ -5,7 +5,13 @@ import tkinter.ttk as ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from PIL import Image, ImageTk
-
+import callModel
+from tensorflow.keras.models import load_model
+import os
+import numpy as np
+import csv
+import pandas as pd
+from callModel import predict_label
 
 class SignalClassifierGUI:
     def __init__(self, master):
@@ -20,7 +26,10 @@ class SignalClassifierGUI:
         self.offset_var = tk.DoubleVar()
         self.signal_type_var = tk.StringVar()
     
-
+        #Prediktion
+        self.prediction_label = Label(master, text="", font=('Helvetica', 14))
+        self.prediction_label.grid(row=7, column=0, columnspan=2)
+        
         # Eigabefelder
         self.label_duration = Label(master, text="Dauer")
         self.label_duration.grid(row=1, column=0)
@@ -63,7 +72,7 @@ class SignalClassifierGUI:
         self.frame.grid(row=8, column=0, columnspan=2)
         self.canvas = FigureCanvasTkAgg(Figure(), master=self.frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=8, column=8)
+        self.canvas.get_tk_widget().grid(row=9, column=8)
         #self.canvas.get_tk_widget().update_idletasks()
         #width, height = self.canvas.get_tk_widget().winfo_width(), self.canvas.get_tk_widget().winfo_height()
         #self.canvas.get_tk_widget().place(in_=background_label, anchor="center", relx=.5, rely=.5, width=width, height=height)
@@ -82,6 +91,17 @@ class SignalClassifierGUI:
         self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
+        model_path = os.path.join('models', 'Signalclassifier.h5')
+        # Modell laden
+        loaded_model = load_model(model_path)
+        csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\csv_file.csv'
+        
+        answer= predict_label(csv_file_path)
+        print(answer)
+        self.prediction_label.config(text=answer)
+        
+        
+            
      
     
 def main():
