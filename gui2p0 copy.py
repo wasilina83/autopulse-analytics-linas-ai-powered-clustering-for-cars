@@ -20,6 +20,7 @@ class SignalClassifierGUI:
     def __init__(self, master, ui_manager):
         self.ui_manager = ui_manager
         self.master = master
+        self.is_generated = False
 
         # Parameter
         self.duration_var = tk.IntVar()
@@ -27,7 +28,6 @@ class SignalClassifierGUI:
         self.frequency_var = tk.IntVar()
         self.sampling_rate_var = tk.IntVar()
         self.offset_var = tk.DoubleVar()
-        
 
         # Kleines Canvas im Haupt-Canvas
         self.setup_sidebar_canvas()
@@ -102,14 +102,6 @@ class UIManager:
         self.frame = ttk.Frame(self.master)
         self.canvas = FigureCanvasTkAgg(Figure(), master=self.frame)
         self.canvas.draw()
-        self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1, anchor='se')
-
-        # # Leinwand für das Diagramm
-        # self.frame = ttk.Frame(self.master)
-        # self.frame.place(relx=0.7, rely=0.7, relwidth=0.5, relheight=0.5, x=345, y=245, anchor='se')
-        # self.canvas = FigureCanvasTkAgg(Figure(), master=self.frame)
-        # self.canvas.draw()
-        # self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1, anchor='se')
         
     def generate_signals_and_predict(self):
         # Werte der Schieberegler und Eingabefelder, wenn der Button gedrückt wird
@@ -128,24 +120,29 @@ class UIManager:
         time, signal = signal_function(duration, amplitude, frequency, sampling_rate, offset)
 
         # Erstelle und platziere die Leinwand nach Bedarf
-        if not hasattr(self, 'canvas_placed'):
+        if not self.is_generated:
+            self.is_generated = True
+            self.frame.place(relx=0.7, rely=0.7, relwidth=0.5, relheight=0.5, x=345, y=245, anchor='se')
             self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1, anchor='se')
-            self.canvas_placed = True
-        time, signal = signal_function(duration, amplitude, frequency, sampling_rate, offset)
+            self.canvas.get_tk_widget().destroy
+            self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
+            self.canvas.draw()
+            self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
+        else:
+            # Hier kannst du den Code für die Signalauswertung einfügen
+            model_path = os.path.join('models', 'Signalclassifier.h5')
+            # Modell laden
+            loaded_model = load_model(model_path)
+            csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\csv_file.csv'
 
-        self.canvas.get_tk_widget().destroy
-        self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
-        model_path = os.path.join('models', 'Signalclassifier.h5')
-        # Modell laden
-        loaded_model = load_model(model_path)
-        csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\csv_file.csv'
-
-        answer = predict_label(csv_file_path)
-        print(answer)
-        # Assuming you have a prediction_label defined in your GUI
-        self.prediction_label.config(text=answer)
+            answer = predict_label(csv_file_path)
+            print(answer)
+            # Assuming you have a prediction_label defined in your GUI
+            self.prediction_label.config(text=answer)
+            
+    def generate_new_signal(self):
+        # Hier kannst du die Logik für die erneute Signalgenerierung einfügen
+        pass
 
     def toggle_fullscreen(self, event):
         self.master.attributes("-fullscreen", not self.master.attributes("-fullscreen", False))
