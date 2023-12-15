@@ -22,7 +22,7 @@ def predict_label(csv_path):
 
         # Hier können Sie eine Schwellenwertlogik oder ähnliches anwenden, um das endgültige Label zu erhalten
         label = 1 if prediction > 0.5 else 0
-        label = "good" if prediction > 0.5 else "bad"
+        label = "Das Signal ist nicht verrauscht. " if prediction > 0.5 else "Das Signal ist verrauscht."
 
         return label
 
