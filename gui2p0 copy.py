@@ -8,6 +8,8 @@ from matplotlib.figure import Figure
 from tensorflow.keras.models import load_model
 import os
 from callModel import predict_label
+from siglanGen import generate_signal, signal_functions
+
 
 class FunctionalityManager:
     def __init__(self, ui_manager):
@@ -128,6 +130,13 @@ class UIManager:
             self.canvas = FigureCanvasTkAgg(generate_signal(time, signal), master=self.frame)
             self.canvas.draw()
             self.canvas.get_tk_widget().grid(row=0, column=3, columnspan=2, sticky=tk.W+tk.E+tk.N+tk.S)
+
+            # Ändere den Text des Buttons
+            self.button_generate_signals.config(text="Signal auswerten")
+
+            # Füge den neuen Button für die erneute Signalgenerierung hinzu
+            self.button_generate_new_signal = Button(self.BG_canvas, text="Neues Signal generieren", command=self.generate_new_signal)
+            self.button_generate_new_signal.place(x=115, y=850)
         else:
             # Hier kannst du den Code für die Signalauswertung einfügen
             model_path = os.path.join('models', 'Signalclassifier.h5')
