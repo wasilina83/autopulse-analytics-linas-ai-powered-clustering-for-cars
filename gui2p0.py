@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
-import os
 import tkinter.ttk as ttk
-from siglanGen import signal_functions 
+from siglanGen import signal_functions, generate_signal
+from matplotlib. 
 
 
 class FunctionalityManager:
