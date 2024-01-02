@@ -6,7 +6,7 @@ beta = 0       # the exponent: 0=white noite; 1=pink noise;  2=red noise (also "
 samples = 2**16  # number of samples to generate (time series extension)
 
 #Deffing some colores
-A = 2*cn.powerlaw_psd_gaussian(beta, samples)
+A = cn.powerlaw_psd_gaussian(beta, samples)
 
 #Ploting first subfiure
 plt.plot(A, color='black', linewidth=1)
