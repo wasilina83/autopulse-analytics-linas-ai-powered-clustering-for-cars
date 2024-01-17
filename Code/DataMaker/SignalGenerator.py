@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from random import seed, random
 import colorednoise as cn
 
+
 def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0):
     """
     Generate a rectangular signal.
@@ -90,25 +91,12 @@ def add_noise_to_signal(time, signal, noise_name, noise_amplitude = .25):
 
     return time, signal_with_noise
 
-def generate_and_save_signal_loop(signal_function, noise_name, noise_amplitude):
-    duration_step = 1
-    duration_max = 20
-    duration_min = 5
-    amplitude_step = 1
-    amplitude_max = 20
-    amplitude_min = 1
-    frequency_step = 1
-    frequency_ 
-    offset
-    return 0
-
-
-
 signal_functions = {
-    "Ansauglufttemperatur": generate_rectangle_signal,
-    "Luftmassenmesser": generate_triangle_signal,
+    "Ansauglufttemperatur": generate_triangle_signal,
+    "Luftmassenmesser": generate_rectangle_signal,
     "Lambdasonde":generate_sine_signal
     }
+
 
 noise_beta = {
     "Weis": 0,

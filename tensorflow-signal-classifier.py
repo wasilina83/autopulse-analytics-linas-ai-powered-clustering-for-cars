@@ -3,7 +3,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense
 from sklearn.metrics import accuracy_score
-from CreateData import *
+from CreateData2 import *
 import cv2
 import imghdr
 import numpy as np
