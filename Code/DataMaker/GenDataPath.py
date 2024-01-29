@@ -1,6 +1,7 @@
 import os
 from CreateData import *
 from SignalGenerator import *
+import numpy as np
 
 def create_project_structure(project_path):
     # Erstelle den Hauptprojektordner
@@ -26,9 +27,11 @@ def create_project_structure(project_path):
             noise_path = os.path.join(sensor_path, noise)
             os.makedirs(sensor_path, exist_ok=True)
             noise_name = noise
+            print(f"noise: {noise}")
                 
                 # Erstelle Unterordner für verschiedene Rauschstärken
             for noise_level in ["Rauschen_0", "Rauschen_25", "Rauschen_50", "Rauschen_75", "Rauschen_100"]:
+                print(f"noise_level: {noise_level}")
                 data_path = os.path.join(noise_path, noise_level)
                 noise_amplitude = noise_levels[noise_level]
                 generate_and_save_signal_loop(signal_function, noise_name, noise_amplitude, data_path)

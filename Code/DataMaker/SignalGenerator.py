@@ -4,30 +4,30 @@ from random import seed, random
 import colorednoise as cn
 
 
-def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0):
+def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0, phase_shift=0):
     """
     Generate a rectangular signal.
 
     Parameters:
     - duration: Duration of the signal in seconds (default is 10).
-    - max_amplitude: amplitude of the signal (default is 1).
+    - amplitude: Amplitude of the signal (default is 1).
     - frequency: Frequency of the signal in Hertz (default is 1).
-    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
+    - offset: Offset of the signal (default is 0).
+    - phase_shift: Phase shift of the signal in radians (default is 0).
 
     Returns:
     - time: Time array for the signal.
     - signal: Generated rectangular signal.
     """
-    sampling_rate=1000
-    # Calculate the time array
+    sampling_rate = 1000
     time = np.arange(0, duration, 1/sampling_rate)
 
     # Generate the rectangular signal with dynamic amplitude
-    signal =offset + amplitude * np.sign(np.sin(2 * np.pi * frequency * time))
+    signal = offset + amplitude * np.sign(np.sin(2 * np.pi * frequency * time + phase_shift))
 
     return time, signal
 
-def generate_sine_signal(duration, amplitude=1, frequency=1, offset=0):
+def generate_sine_signal(duration, amplitude=1, frequency=1, offset=0, phase_shift=0):
     """
     Generate a sine signal.
 
@@ -35,19 +35,19 @@ def generate_sine_signal(duration, amplitude=1, frequency=1, offset=0):
     - duration: Duration of the signal in seconds.
     - amplitude: Amplitude of the signal (default is 1).
     - frequency: Frequency of the signal in Hertz (default is 1).
-    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
     - offset: Offset of the signal (default is 0).
+    - phase_shift: Phase shift of the signal in radians (default is 0).
 
     Returns:
     - time: Time array for the signal.
     - signal: Generated sine signal.
     """
-    sampling_rate=1000
+    sampling_rate = 1000
     time = np.arange(0, duration, 1/sampling_rate)
-    signal = offset + amplitude * np.sin(2 * np.pi * frequency * time)
+    signal = offset + amplitude * np.sin(2 * np.pi * frequency * time + phase_shift)
     return time, signal
 
-def generate_triangle_signal(duration=2, amplitude=1, frequency=1, offset=0):
+def generate_triangle_signal(duration=2, amplitude=1, frequency=1, offset=0, phase_shift=0):
     """
     Generate a triangle signal.
 
@@ -55,17 +55,18 @@ def generate_triangle_signal(duration=2, amplitude=1, frequency=1, offset=0):
     - duration: Duration of the signal in seconds.
     - amplitude: Amplitude of the signal (default is 1).
     - frequency: Frequency of the signal in Hertz (default is 1).
-    - sampling_rate: Sampling rate of the signal (default is 1000 samples per second).
-    - offset: Offset of the signal (default is 0). 
+    - offset: Offset of the signal (default is 0).
+    - phase_shift: Phase shift of the signal in radians (default is 0).
 
     Returns:
     - time: Time array for the signal.
     - signal: Generated triangle signal.
     """
-    sampling_rate=1000
+    sampling_rate = 1000
     time = np.arange(0, duration, 1/sampling_rate)
-    signal = offset + amplitude * np.abs(2 * (time * frequency - np.floor(0.5 + time * frequency)))
+    signal = offset + amplitude * np.abs(2 * (time * frequency - np.floor(0.5 + time * frequency) + phase_shift/(2*np.pi)))
     return time, signal
+
 
 def add_noise_to_signal(time, signal, noise_name, noise_amplitude = .25):
     """

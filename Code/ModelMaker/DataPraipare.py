@@ -13,6 +13,11 @@ from SignalGenerator import signal_functions, noise_beta
 
 
 
+wanded_noise_levels = { 
+            "Rauschen_25" : .25, 
+            "Rauschen_50" : .5, 
+            "Rauschen_75" : 0.75, 
+            "Rauschen_100" :1}
 
 
 def gen_dir_dict(data_dir: str, attribute: str, noise_type=None) -> Dict[str, List[str]]:
@@ -168,10 +173,12 @@ def from_file_to_data(path_dict):
     Returns:
     - data: List of DataFrames containing signal data.
     """
+    
     data_frames = []
     for key, value in path_dict.items():
         print(f"Label: {key}, Type: {type(key)}, Key: {noise_beta[key]}")
         for path in value:
+            print
             df = pd.read_csv(path)
             new_df = pd.DataFrame({noise_beta[key]: df['signal'].values + df['time'].values})
             data_frames.append(new_df)
@@ -181,14 +188,6 @@ def from_file_to_data(path_dict):
     df_named = df_cleaned.rename_axis("label").reset_index()
     print(df_named)
     return df_named
-
-
-
-wanded_noise_levels = { 
-            "Rauschen_25" : .25, 
-            "Rauschen_50" : .5, 
-            "Rauschen_75" : 0.75, 
-            "Rauschen_100" :1}
 
 
 
