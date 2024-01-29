@@ -22,7 +22,7 @@ def predict_label(csv_path):
 
         # Hier können Sie eine Schwellenwertlogik oder ähnliches anwenden, um das endgültige Label zu erhalten
         label = 1 if prediction > 0.5 else 0
-        label = "good" if prediction > 0.5 else "bad"
+        label = "Das Signal ist nicht verrauscht. " if prediction > 0.5 else "Das Signal ist verrauscht."
 
         return label
 
@@ -30,9 +30,9 @@ def predict_label(csv_path):
         print(f'Error processing CSV file {csv_path}: {str(e)}')
         return None
 
-# Beispielaufruf für eine CSV-Datei
-csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\data\bad\signals_data_Signal-frequency 1_Signal-sampling_rate 1000_Signal-offset -1_good_0.4.csv'  # Ersetzen Sie dies durch den tatsächlichen Pfad Ihrer CSV-Datei
-predicted_label = predict_label(csv_file_path)
-print(predict_label(csv_file_path))
-# if predicted_label is not None:
-#     print(f'Predicted label for {csv_file_path}: {predicted_label}')
+# # Beispielaufruf für eine CSV-Datei
+# csv_file_path = r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\data\bad\signals_data_Signal-frequency 1_Signal-sampling_rate 1000_Signal-offset -1_good_0.4.csv'  # Ersetzen Sie dies durch den tatsächlichen Pfad Ihrer CSV-Datei
+# predicted_label = predict_label(csv_file_path)
+# print(predict_label(csv_file_path))
+# # if predicted_label is not None:
+# #     print(f'Predicted label for {csv_file_path}: {predicted_label}')
