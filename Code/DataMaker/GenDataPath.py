@@ -2,6 +2,7 @@ import os
 from CreateData import *
 from SignalGenerator import *
 import numpy as np
+import time 
 
 def create_project_structure(project_path):
     # Erstelle den Hauptprojektordner
@@ -17,7 +18,7 @@ def create_project_structure(project_path):
     os.makedirs(split_path, exist_ok=True)
 
         # Erstelle Unterordner für verschiedene Sensoren
-    for sensor in ["Lambdasonde", "Ansauglufttemperatur", "Luftmassenmesser"]:
+    for sensor in ["Luftmassenmesser"]:
         sensor_path = os.path.join(split_path, sensor)
         os.makedirs(sensor_path, exist_ok=True)
         signal_function =signal_functions[sensor]

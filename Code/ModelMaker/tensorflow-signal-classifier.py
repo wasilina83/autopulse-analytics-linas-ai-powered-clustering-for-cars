@@ -33,7 +33,7 @@ attribute = 'cluster'
 noise_type = None
 
 # Laden Sie den Datensatz
-path_dict_1 = red_file_path_dict(gen_dir_dict(data_dir_1, attribute, noise_type), data_params['data_size']/100)
+path_dict_1 = red_file_path_dict(gen_dir_dict(data_dir_2, attribute, noise_type), data_params['data_size']/100)
 # path_dict_2 = red_file_path_dict(gen_dir_dict(data_dir_2, attribute, noise_type), data_params['data_size']/100)
 # path_dict_3 = red_file_path_dict(gen_dir_dict(data_dir_3, attribute, noise_type), data_params['data_size']/100)
 data_1 = from_file_to_data(path_dict_1)
