@@ -26,7 +26,7 @@ model_params = {
 '''
 
 data_params = {
-    "data_size": 2,
+    "data_size": 20,
     "test_size": 0.2,
     "random_state": 42
 }

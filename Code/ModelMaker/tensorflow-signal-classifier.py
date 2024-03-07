@@ -1,11 +1,9 @@
 # Klassen und Funktionen importieren
-import os
 import sys
 from typing import Dict, List
-import random
-import logging
 import pandas as pd
 import tensorflow as tf
+import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, BatchNormalization, Dropout
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -27,8 +25,8 @@ from SignalGenerator import signal_functions, noise_beta
 from GenDataPath import noise_levels
 
 data_dir_1 = r'Daten\Trainingsdaten\Ansauglufttemperatur'
-data_dir_2 =r'Daten\Trainingsdaten\Lambdasonde'
-data_dir_3 =r'Daten\Trainingsdaten\Luftmassenmesser'
+data_dir_3 =r'Daten\Trainingsdaten\Lambdasonde'
+data_dir_2 =r'Daten\Trainingsdaten\Luftmassenmesser'
 attribute = 'cluster'
 noise_type = None
 
@@ -60,17 +58,19 @@ print(len(X_train.columns))
 
 # Model erstellen
 model = Sequential()
-model.add(Dense(60, input_dim=len(X_train.columns) ,activation="relu"))
-model.add(Dense(15, activation="relu"))
+model.add(Dense(256, input_dim=len(X_train.columns) ,activation="relu"))
+model.add(Dense(128, activation="relu"))
+model.add(BatchNormalization())
+model.add(Dense(64, activation="relu"))
 model.add(Dropout(0.2))
 model.add(Dense(3, activation="softmax"))
-model.compile(Adam(learning_rate=0.001), "categorical_crossentropy", metrics=["accuracy"])
+model.compile(Adam(learning_rate=0.0005), "categorical_crossentropy", metrics=["accuracy"])
 
 model.build()
 model.summary()
 
 # Model trainieren
-model.fit(X_train, y_train, verbose=1, batch_size=64, epochs=200)
+history = model.fit(X_train, y_train, verbose=1, batch_size=32, epochs=500, validation_data=(X_test, y_test))
 
 # Vorhersagen und Evaluierung
 y_pred_prob = model.predict(X_test)
@@ -94,3 +94,21 @@ f_score = f1_score(y_test_class, y_pred_class, average='weighted', zero_division
 # Print or use the precision and F-score as needed
 print("Weighted Precision:", precision)
 print("Weighted F-score:", f_score)
+# Plot Lernkurven
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Modellgenauigkeit')
+plt.xlabel('Epochen')
+plt.ylabel('Genauigkeit')
+plt.legend(['Training', 'Validierung'], loc='upper left')
+plt.savefig('Dokumentation/Model/Modellgenauigkeit.png')
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Modellverlust')
+plt.xlabel('Epochen')
+plt.ylabel('Verlust')
+plt.legend(['Training', 'Validierung'], loc='upper left')
+plt.savefig('Dokumentation/Model/Modellverlust.png')
+plt.show()
