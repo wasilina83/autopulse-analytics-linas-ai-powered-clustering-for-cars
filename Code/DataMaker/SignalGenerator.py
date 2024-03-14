@@ -93,11 +93,28 @@ def add_noise_to_signal(time, signal, noise_name, noise_amplitude = .25):
     return time, signal_with_noise
 
 signal_functions = {
-    "Ansauglufttemperatur": generate_triangle_signal,
-    "Luftmassenmesser": generate_rectangle_signal,
-    "Lambdasonde":generate_sine_signal
+    "Huppe": generate_triangle_signal,
+    "Schuhe": generate_rectangle_signal,
+    "Gepäck":generate_sine_signal
+    }
+pron = {
+    "Huppe": "der Huppe",
+    "Schuhe":"der Schuhe",
+    "Gepäck":"des Gepäcks"
     }
 
+def genSigPNG(funk, duration, amplitude, frequency, offset, phase_shift):
+    signal_function = signal_functions[funk]
+    time, signal = signal_function(duration, amplitude, frequency, offset, phase_shift)
+    plt.figure()
+    plt.plot(time, signal)
+    plt.title(f'Dein Signal {pron[funk]}')
+    plt.xlabel('Frequenz (Hz)')
+    plt.ylabel('Amplitude')
+    plt.savefig(r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\test-1.png')
+    return 0
+    
+    
 
 noise_beta = {
     "Weis": 0,
