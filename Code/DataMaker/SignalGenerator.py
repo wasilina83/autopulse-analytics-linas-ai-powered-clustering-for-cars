@@ -19,11 +19,11 @@ def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0, p
     - time: Time array for the signal.
     - signal: Generated rectangular signal.
     """
-    sampling_rate = 1000
-    time = np.arange(0, duration, 1/sampling_rate)
+    sampling_rate = 16384                   # Number of samples scipi
+    time = np.linspace(0, 1, sampling_rate)*2*math.pi
 
     # Generate the rectangular signal with dynamic amplitude
-    signal = offset + amplitude * np.sign(np.sin(2 * np.pi * frequency * time + phase_shift))
+    signal = offset + amplitude * np.sign(np.sin(frequency * time + phase_shift))
 
     return time, signal
 
@@ -42,9 +42,9 @@ def generate_sine_signal(duration, amplitude=1, frequency=1, offset=0, phase_shi
     - time: Time array for the signal.
     - signal: Generated sine signal.
     """
-    sampling_rate = 1000
-    time = np.arange(0, duration, 1/sampling_rate)
-    signal = offset + amplitude * np.sin(2 * np.pi * frequency * time + phase_shift)
+    sampling_rate = 16384                   # Number of samples
+    time = np.linspace(0, 1, sampling_rate)*2*math.pi
+    signal = offset + amplitude * np.sin(frequency * time + phase_shift)
     return time, signal
 
 def generate_triangle_signal(duration=2, amplitude=1, frequency=1, offset=0, phase_shift=0):
@@ -62,9 +62,9 @@ def generate_triangle_signal(duration=2, amplitude=1, frequency=1, offset=0, pha
     - time: Time array for the signal.
     - signal: Generated triangle signal.
     """
-    sampling_rate = 1000
-    time = np.arange(0, duration, 1/sampling_rate)
-    signal = offset + amplitude * np.abs(2 * (time * frequency - np.floor(0.5 + time * frequency) + phase_shift/(2*np.pi)))
+    sampling_rate = 16384                   # Number of samples
+    time = np.linspace(0, 1, sampling_rate )*2*math.pi
+    signal = offset + amplitude * np.abs((time * frequency - np.floor(0.5 + time * frequency) + phase_shift/(2*np.pi)))
     return time, signal
 
 
