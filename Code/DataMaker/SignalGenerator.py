@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import seed, random
 import colorednoise as cn
+import math
 
 
 def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0, phase_shift=0):
@@ -111,7 +112,7 @@ def genSigPNG(funk, duration, amplitude, frequency, offset, phase_shift):
     plt.title(f'Dein Signal {pron[funk]}')
     plt.xlabel('Frequenz (Hz)')
     plt.ylabel('Amplitude')
-    plt.savefig(r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\test-1.png')
+    plt.savefig(r'GUI/images/test-1.png')
     return 0
     
     
