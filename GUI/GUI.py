@@ -9,7 +9,7 @@ from kivy.animation import Animation
 from kivy.uix.slider import Slider
 from kivy.uix.spinner import Spinner
 import sys
-sys.path.insert(0, r'Code\DataMaker')
+sys.path.insert(0, r'Code/DataMaker')
 from SignalGenerator import signal_functions, noise_beta, genSigPNG
 import math
 
@@ -124,7 +124,7 @@ class SignalclassifierApp(App):
         duration=10
         sigTest=genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
         if sigTest == 0:
-            self.sigpicture = Image(source=r'C:\Users\Engelmann\OneDrive\Dokumente\arbeit\autopulse-analytics-linas-ai-powered-clustering-for-cars\test-1.png', size_hint=(None, None),  allow_stretch=True, size=(800, 800), pos_hint={'center_x': .69, 'top': 0.9})
+            self.sigpicture = Image(source='GUI/test-1.png', size_hint=(None, None),  allow_stretch=True, size=(800, 800), pos_hint={'center_x': .69, 'top': 0.9})
             self.layout.add_widget(self.sigpicture)
 
         # Hier können Sie die Animation basierend auf den gelesenen Parametern durchführen
