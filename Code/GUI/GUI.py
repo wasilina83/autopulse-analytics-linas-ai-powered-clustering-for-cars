@@ -17,22 +17,11 @@ from kivy.graphics import RoundedRectangle, Color, Rectangle
 from kivy.uix.video import Video
 from kivy.lang import Builder
 import os
+from functools import partial
+import time
+from makeSig import generate_custom_waveform_and_plot
 
-Builder.load_string('''
-<SignalclassifierLayout>:
-    RelativeLayout:
-        Image:
-            id: gif
-            source: 'animation.gif'
-            size_hint: None, None
-            size: 640, 480
-            allow_stretch: True
-            anim_delay: -1
-            anim_loop: 1
-            center: self.parent.center
-            pos_hint: {'center_x': 0.69, 'top': 0.9}
-            
-''')
+
 class SignalclassifierLayout(RelativeLayout):
     def refreshWindow(self, signal_type, duration, amplitude, frequency, offset, phase_shift):
         # Pfad zum alten GIF
@@ -69,9 +58,7 @@ class CustomLabel(Label):
             # Update the size and position of the rectangle
             self.rect.size = self.size
             self.rect.pos = self.pos
-            
-class VideoApp(App):
-    pass
+
 
 class CustomSlider(Slider):
     def __init__(self, **kwargs):
@@ -104,6 +91,7 @@ class SignalclassifierApp(App):
     
         # Set the window to fullscreen mode
         Window.fullscreen = 'auto'
+        self.orientation = 'vertical'
         # Create a RelativeLayout as the main layout
         self.layout = RelativeLayout()
 
@@ -224,9 +212,9 @@ class SignalclassifierApp(App):
                     self.setup_param_box, self.amplitude_slider, self.frequency_slider, self.offset_slider,
                     self.phase_shift_slider]:
             Animation(opacity=1, duration=1).start(widget)
+    
 
     def on_play_button_click2(self, instance):
-        
         # Read parameters
         amplitude = self.amplitude_slider.value
         frequency = self.frequency_slider.value
@@ -234,7 +222,15 @@ class SignalclassifierApp(App):
         phase_shift = self.phase_shift_slider.value
         signal_type = self.signal_type_spinner.text
         duration = 3
-        genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
+        def start_test(dt):
+            test=1
+            if test == 0:
+                test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
+            else:
+                print("Test beendet, GUI wird aktualisiert.")
+                Clock.unschedule(start_test)    # Hier können Sie Ihre GUI-Update-Logik einfügen
+        test=1        
+        Clock.schedule_interval(start_test, 5)  # Überprüfen Sie jede 0,1 Sekunde, ob 'test'
         self.replay_button = Button(background_normal='GUI/images/wiederholen.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.09, 'top': 0.2}, border=(0, 0, 0, 0))
         self.replay_button.bind(on_press=self.on_replay_button_click)
         self.layout.add_widget(self.replay_button)
@@ -242,35 +238,42 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.restart_sig_box)
         self.restart_sig = Label(text=f'Neues Signal \n gererieren', size_hint=(None, None), size=(300, 70), pos_hint={'center_x': 0.09, 'top': 0.3}, color=(1, 1, 1, 1), font_size='20sp')
         self.layout.add_widget(self.restart_sig)
-        
-        
+        self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.layout.add_widget(self.signal_win)
         # Function to generate the animation in a separate thread
-                    #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
+        #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
-        self.layout = SignalclassifierLayout()
+        
         return self.layout
-    def refreshWindow(self, signal_type, duration, amplitude, frequency, offset, phase_shift):
-            self.layout.refreshWindow(signal_type, duration, amplitude, frequency, offset, phase_shift)
-            return self.layout 
+    
     def on_replay_button_click(self, instanze):
         # Read parameters
-        
+        self.layout.remove_widget(self.signal_win)
         amplitude = self.amplitude_slider.value
         frequency = self.frequency_slider.value
         offset = self.offset_slider.value
         phase_shift = self.phase_shift_slider.value
         signal_type = self.signal_type_spinner.text
         duration = 3
-        self.refreshWindow(signal_type, duration, amplitude, frequency, offset, phase_shift)
-        
+        def start_test(dt):
+            test=1
+            if test is 0:
+                test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
+            else:
+                print("Test beendet, GUI wird aktualisiert.")
+                Clock.unschedule(start_test)
+        test= 1
+        Clock.schedule_interval(start_test, 5)
+        self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.layout.add_widget(self.signal_win)
         # Function to generate the animation in a separate thread
-                    #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
+        generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
-        self.layout = SignalclassifierLayout()
         return self.layout
-        
+    
+    
         
 
 if __name__ == '__main__':

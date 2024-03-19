@@ -2,10 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 import matplotlib.animation as animation 
-import imgui
 from celluloid import Camera
 import matplotlib
 matplotlib.use('Agg')
+import time as t
+import os
 
 def generate_rectangle_signal(duration=10, amplitude=1, frequency=1, offset=0, phase_shift=0):
     # Generate the rectangular signal with dynamic amplitude
@@ -48,17 +49,19 @@ def genSigPNG(funk, duration, amplitude, frequency, offset, phase_shift):
     plt.title(f'Dein Signal {pron[funk]}')
     camera = Camera(fig)
     # Berechnen Sie die Anzahl der Schritte basierend auf der Bildrate
-    step_count = int(len(time) / 100)
+    step_count = int(len(time) / 10)
     step_size = max(1, step_count)  # Stellen Sie sicher, dass der Schritt mindestens 1 ist
     
     for i in range(0, len(time), step_size):
         ax.plot(time[:i], signal[:i], 'blue')
-        plt.pause(0.001)
+        plt.pause(0.0001)
         camera.snap()
     animation = camera.animate()
-    animation.save(r'GUI\images\animation.gif', writer='PillowWriter', fps=4)
+    animation.save('GUI/images/animation.gif', writer='PillowWriter', fps=.5)
     plt.close(fig)  # Plot schließen, um sicherzustellen, dass er nicht angezeigt wird
-
+    
+    t.sleep(5)
+    
     return 0
 
 # Signalparameter und Funktionsaufruf hier anpassen...
