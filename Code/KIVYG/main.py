@@ -14,11 +14,12 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.graphics import RoundedRectangle, Color
 from SignalGenerator import signal_functions, pron, genSigPNG
-from godict import widget_dict
+
 
 # 2.  Kivy Builder String hier
 # Laden der KV-Datei mit den Widgets
 Builder.load_file('widgets.kv')
+
 # 3.
 def calculate_size_properties(min_size=True, pos_x=True, pos_y=True):
     window_width, window_height = Window.size
@@ -158,7 +159,7 @@ class SignalclassifierApp(App):
         self.prolab_con = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(prolab_size, prolab_size), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab_con)
         # Add other widgets or elements if needed
-        self.text_label3 = Label(text='Analyse starten', font_size=int(window_height*.08), pos_hint={'center_x':.3, 'top': 1})
+        self.text_label3 = Label(text='Generator starten', font_size=int(window_height*.08), pos_hint={'center_x':.3, 'top': 1})
         self.layout.add_widget(self.text_label3)
         # Load the image for the Play button
         play_button_size = int(min(window_width, window_height)*.4)  # 10% of the smaller dimension
@@ -193,26 +194,33 @@ class SignalclassifierApp(App):
         self.logo_stat = Image(source='KIVYG/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
         self.layout.add_widget(self.logo_stat)
         
-        suffixes = ['_stat']
-        widget_dict = []
-        print(f"\n widget_dict:\n{widget_dict}\n")
+#         widget_dict = {
+#     'start_sig_box': self.start_sig_box,
+#     'start_sig': self.start_sig,
+#     'play_button2': self.play_button2,
+#     'signal_type_spinner': self.signal_type_spinner,
+#     'phase_shift_label': self.phase_shift_label,
+#     'setup_param_label': self.setup_param_label,
+#     'amplitude_label': self.amplitude_label,
+#     'frequency_label': self.frequency_label,
+#     'offset_label': self.offset_label,
+#     'amplitude_label_box': self.amplitude_label_box,
+#     'frequency_label_box': self.frequency_label_box,
+#     'offset_label_box': self.offset_label_box,
+#     'phase_shift_label_box': self.phase_shift_label_box,
+#     'setup_param_box': self.setup_param_box,
+#     'amplitude_slider': self.amplitude_slider,
+#     'frequency_slider': self.frequency_slider,
+#     'offset_slider': self.offset_slider,
+#     'phase_shift_slider': self.phase_shift_slider
+# }
+#         # Animation for wigets
+#         new_animation = Animation(x=0, duration=1)
+#         new_animation.start(self.new_background)
+#         Clock.schedule_once(self.delayed_appearance, 1.5)
         
-        
-        
-        
-        
-        
-                    
-        
-
-
-        # Animation for wigets
-        new_animation = Animation(x=0, duration=1)
-        new_animation.start(self.new_background)
-        Clock.schedule_once(self.delayed_appearance, 1.5)
-        
-          # Liste der Suffixe, nach denen gesucht werden soll
-        set_widgets_opacity_by_suffix(widget_dict, 0)
+#           # Liste der Suffixe, nach denen gesucht werden soll
+#         set_widgets_opacity_by_suffix(widget_dict, 0)
     
     def delayed_appearance(self, widget_dict):
         # Start the animation to change the opacity from 0 to 1
