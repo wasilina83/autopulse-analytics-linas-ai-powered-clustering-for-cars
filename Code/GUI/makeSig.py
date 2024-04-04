@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import redpitaya_scpi as scpi
 import sys
 sys.path.insert(0, 'DataMaker')
-from SignalGenerator import signal_functions, noise_beta, genSigPNG
+from SignalGenerator import signal_functions, genSigPNG
  
 def generate_custom_waveform_and_plot(funk, duration, amplitude, frequency, offset, phase_shift):
     IP = '192.168.178.20'
@@ -20,8 +20,9 @@ def generate_custom_waveform_and_plot(funk, duration, amplitude, frequency, offs
     time, signal = funkion(duration, amplitude, frequency, offset, phase_shift)
 
     plt.plot(time, signal)
-    plt.title('Custom waveform')
-    matplotlib.pyplot.savefig('test.png')
+    title=f"Sigmal: {funk}"
+    plt.title(title)
+    matplotlib.pyplot.savefig('GUI/images/test-12.png')
 
     rp_s.tx_txt('GEN:RST')
 

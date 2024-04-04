@@ -13,10 +13,8 @@ from kivy.uix.spinner import Spinner
 from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.graphics import RoundedRectangle, Color
-import sys
-sys.path.insert(0, 'DataMaker')
 from SignalGenerator import signal_functions, pron, genSigPNG
-
+from godict import widget_dict
 
 # 2.  Kivy Builder String hier
 # Laden der KV-Datei mit den Widgets
@@ -49,7 +47,7 @@ class SignalclassifierLayout(RelativeLayout):
             <ImageUpdater>:
                 Image:
                     id: gif
-                    source: 'GUI/images/animation.gif'
+                    source: 'KIVYG/images/animation.gif'
                     size_hint: None, None
                     size: 640, 480
                     allow_stretch: True
@@ -63,7 +61,7 @@ class SignalclassifierLayout(RelativeLayout):
         # Generieren des neuen GIF
         genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Aktualisieren der Bildquelle im Kivy-Layout
-        image_updater.ids.gif.source = 'GUI/images/animation.gif'
+        image_updater.ids.gif.source = 'KIVYG/images/animation.gif'
         # Neuzeichnen des Bildes
         image_updater.ids.gif.reload()
         # Hinzufügen des ImageUpdater-Layouts zum SignalclassifierLayout
@@ -121,6 +119,10 @@ class SignalGenerator:
         genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
 
 # 5. Main App Class
+def set_widgets_opacity_by_suffix(widget_dict, opacity_value):
+            for key, widget in widget_dict.items():
+                        widget.opacity = opacity_value
+
 class SignalclassifierApp(App):
     def calculate_size(self, min_size=True, pos_x=True, pos_y=True):
         window_width, window_height = Window.size
@@ -145,22 +147,22 @@ class SignalclassifierApp(App):
         #fullscreen mode
         Window.fullscreen = 'auto'
         self.layout = RelativeLayout()
-        self.background = Image(source='GUI/images/BG.png', allow_stretch=True, keep_ratio=False)
+        self.background = Image(source='KIVYG/images/BG.png', allow_stretch=True, keep_ratio=False)
         self.layout.add_widget(self.background)
         window_width, window_height = Window.size
         # Load the image for the logo (with transparent background)
         logo_size = int(window_width*1.63)  # 20% of the smaller dimension
         prolab_size = int(window_width*0.7)
-        self.logo_pic = Image(source='GUI/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': 0.49, 'top': 1.4})
+        self.logo_pic = Image(source='KIVYG/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': 0.49, 'top': 1.4})
         self.layout.add_widget(self.logo_pic)
-        self.prolab_con = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(prolab_size, prolab_size), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
+        self.prolab_con = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(prolab_size, prolab_size), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab_con)
         # Add other widgets or elements if needed
         self.text_label3 = Label(text='Analyse starten', font_size=int(window_height*.08), pos_hint={'center_x':.3, 'top': 1})
         self.layout.add_widget(self.text_label3)
         # Load the image for the Play button
         play_button_size = int(min(window_width, window_height)*.4)  # 10% of the smaller dimension
-        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(play_button_size, play_button_size), pos_hint={'center_x': 0.3, 'top':  .4}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(play_button_size, play_button_size), pos_hint={'center_x': 0.3, 'top':  .4}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
         
@@ -186,13 +188,13 @@ class SignalclassifierApp(App):
         
         window_width, window_height = Window.size
         logo_size = int(window_width*.39)
-        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
+        self.new_background = Image(source='KIVYG/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
         self.layout.add_widget(self.new_background)
-        self.logo_stat = Image(source='GUI/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
+        self.logo_stat = Image(source='KIVYG/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
         self.layout.add_widget(self.logo_stat)
         
         suffixes = ['_stat']
-        widget_dict = self.update_widget_dict(suffixes)
+        widget_dict = []
         print(f"\n widget_dict:\n{widget_dict}\n")
         
         
@@ -209,32 +211,17 @@ class SignalclassifierApp(App):
         new_animation.start(self.new_background)
         Clock.schedule_once(self.delayed_appearance, 1.5)
         
-        want_suffixes = ["_box", "_k_label", "_label_box", "_button2", "_slider"]  # Liste der Suffixe, nach denen gesucht werden soll
-        widget_dict = self.update_widget_dict(suffixes)
-        set_widgets_opacity_by_suffix(widget_dict, suffixes, 0)
+          # Liste der Suffixe, nach denen gesucht werden soll
+        set_widgets_opacity_by_suffix(widget_dict, 0)
     
-    def delayed_appearance(self, dt):
+    def delayed_appearance(self, widget_dict):
         # Start the animation to change the opacity from 0 to 1
         for widget_id, widget in widget_dict.items():
             Animation(opacity=1, duration=1).start(widget)
 
-    def update_widget_dict(self, suffixes):
-        widget_dict = {}
-        for child in self.layout.walk():  # Verwende walk(), um alle Widgets zu durchlaufen
-            if hasattr(child, 'ids'):
-                for id_, widget in child.ids.items():
-                    for suffix in suffixes:
-                        if id_.endswith(suffix):
-                            if suffix not in widget_dict:
-                                widget_dict[suffix] = []
-                            widget_dict[suffix].append(widget)
-        return widget_dict
+    
         
-    def set_widgets_opacity_by_suffix(widget_dict, suffixes, opacity_value):
-            for key, widget in widget_dict.items():
-                for suffix in suffixes:
-                    if key.endswith(suffix):
-                        widget.opacity = opacity_value
+    
         
 
     def on_play_button_click2(self, instance):

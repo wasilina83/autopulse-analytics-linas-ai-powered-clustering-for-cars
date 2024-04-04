@@ -56,7 +56,7 @@ def genSigPNG(funk, duration, amplitude, frequency, offset, phase_shift):
         plt.pause(0.0001)
         camera.snap()
     animation = camera.animate()
-    animation.save('GUI/images/animation.gif', writer='PillowWriter', fps=.5)
+    animation.save('KIVYG/images/animation.gif', writer='PillowWriter', fps=.5)
     plt.close(fig)  # Plot schließen, um sicherzustellen, dass er nicht angezeigt wird
     
     t.sleep(5)

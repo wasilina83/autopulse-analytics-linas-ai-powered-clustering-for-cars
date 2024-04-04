@@ -224,7 +224,7 @@ class SignalclassifierApp(App):
         duration = 3
         def start_test(dt):
             test=1
-            if test == 0:
+            if test == 1:
                 test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
             else:
                 print("Test beendet, GUI wird aktualisiert.")
@@ -258,17 +258,19 @@ class SignalclassifierApp(App):
         duration = 3
         def start_test(dt):
             test=1
-            if test is 0:
+            if test == 1:
                 test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
-            else:
                 print("Test beendet, GUI wird aktualisiert.")
                 Clock.unschedule(start_test)
+            else:
+                pass
         test= 1
         Clock.schedule_interval(start_test, 5)
         self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
         self.layout.add_widget(self.signal_win)
         # Function to generate the animation in a separate thread
-        generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
+        #
+        #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
         return self.layout
