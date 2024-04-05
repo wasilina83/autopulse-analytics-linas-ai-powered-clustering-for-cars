@@ -119,7 +119,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
-        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(win_h*.3, win_h*.3), pos_hint={'center_x': .3, 'top': .65}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(win_h*.28, win_h*.28), pos_hint={'center_x': .3, 'top': .6}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
 
