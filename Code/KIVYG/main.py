@@ -105,7 +105,7 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(win_h*.75, win_h*.75), pos_hint={'center_x': 0.2, 'top': 1})
+        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(win_h*.95, win_h*.95), pos_hint={'center_x': 0.2, 'top': 1})
         self.layout.add_widget(self.logo)
         self.prolab = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(win_h*.65, win_h*.65), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab)
