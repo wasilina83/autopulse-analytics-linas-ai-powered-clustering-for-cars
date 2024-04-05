@@ -115,7 +115,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
-        self.text_label3 = Label(text=f'Signalgenerator \n        starten', font_size=win_h*.06, pos_hint={'center_x': .3, 'top': .25}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.text_label3 = Label(text=f'Signalgenerator \n        starten', font_size=win_h*.06, pos_hint={'center_x': .3, 'top': .5}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
