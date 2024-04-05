@@ -134,10 +134,10 @@ class SignalclassifierApp(App):
 
         # Load the new background image
         window_width, window_height = Window.size
-        logo_size = int(window_width*.39)
+        
         self.new_background = Image(source='KIVYG/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
         self.layout.add_widget(self.new_background)
-        self.logo = Image(source='KIVYG/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
+        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(int(window_width*.4), int(window_width*.4)), pos_hint={'center_x': .78, 'top': 1.199})
         self.layout.add_widget(self.logo)
 
         # Add Sliders for the parameters
