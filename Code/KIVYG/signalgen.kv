@@ -1,0 +1,29 @@
+<SignalclassifierLayout>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'KIVYG/images/BG.png'  # Pfade je nach deinem Verzeichnis anpassen
+
+<MyScreenManager>:
+    transition: FadeTransition()
+
+    Screen:
+        name: 'screen1'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Hello, this is Screen 1'
+            Button:
+                text: 'Go to Screen 2'
+                on_press: root.current = 'screen2'
+
+    Screen:
+        name: 'screen2'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Welcome to Screen 2'
+            Button:
+                text: 'Go back to Screen 1'
+                on_press: root.current = 'screen1'
