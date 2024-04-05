@@ -111,7 +111,7 @@ class SignalclassifierApp(App):
         prolab_size = int(window_width*0.7)
         logo_pos_x = window_width * 0.1
         logo_pos_y = window_height * 0.5  # 50% of the height
-        self.logo = Image(source='GUI/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': 0.49, 'top': 1.4})
+        self.logo = Image(source='GUI/images/lolgo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': 0.49, 'top': 1.4})
         self.layout.add_widget(self.logo)
         self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(prolab_size, prolab_size), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab)
