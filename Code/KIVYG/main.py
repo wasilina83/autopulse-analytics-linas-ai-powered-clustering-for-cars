@@ -25,7 +25,7 @@ from makeSig import generate_custom_waveform_and_plot
 class SignalclassifierLayout(RelativeLayout):
     def refreshWindow(self, signal_type, duration, amplitude, frequency, offset, phase_shift):
         # Pfad zum alten GIF
-        old_gif_path = 'GUI/images/animation.gif'
+        old_gif_path = 'KIVYG/images/animation.gif'
         
         # Löschen des alten GIF
         if os.path.exists(old_gif_path):
@@ -96,7 +96,7 @@ class SignalclassifierApp(App):
         self.layout = RelativeLayout()
 
         # Load the background image
-        self.background = Image(source='GUI/images/BG.png', allow_stretch=True, keep_ratio=False)
+        self.background = Image(source='KIVYG/images/BG.png', allow_stretch=True, keep_ratio=False)
 
         # Add the image to the layout
         self.layout.add_widget(self.background)
@@ -105,9 +105,9 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='GUI/images/lolgo.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), pos_hint={'center_x': 0.49, 'top': 1.4})
+        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), pos_hint={'center_x': 0.49, 'top': 1.4})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.5, win_h*.5), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
+        self.prolab = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(win_h*.5, win_h*.5), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
@@ -115,7 +115,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
-        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(win_h*.2, win_h*.2), pos_hint={'center_x': 1, 'top':  .35}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(win_h*.2, win_h*.2), pos_hint={'center_x': 1, 'top':  .35}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
 
@@ -131,9 +131,9 @@ class SignalclassifierApp(App):
         # Load the new background image
         window_width, window_height = Window.size
         logo_size = int(window_width*.39)
-        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
+        self.new_background = Image(source='KIVYG/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
         self.layout.add_widget(self.new_background)
-        self.logo = Image(source='GUI/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
+        self.logo = Image(source='KIVYG/images/logo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': .78, 'top': 1.199})
         self.layout.add_widget(self.logo)
 
         # Add Sliders for the parameters
@@ -178,7 +178,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
-        self.play_button2 = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.25, 'top': 0.2}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.25, 'top': 0.2}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
         # Animation
@@ -219,18 +219,18 @@ class SignalclassifierApp(App):
             if test == 1:
                 test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
             else:
-                print("Test beendet, GUI wird aktualisiert.")
-                Clock.unschedule(start_test)    # Hier können Sie Ihre GUI-Update-Logik einfügen
+                print("Test beendet, KIVYG wird aktualisiert.")
+                Clock.unschedule(start_test)    # Hier können Sie Ihre KIVYG-Update-Logik einfügen
         test=1        
         Clock.schedule_interval(start_test, 5)  # Überprüfen Sie jede 0,1 Sekunde, ob 'test'
-        self.replay_button = Button(background_normal='GUI/images/wiederholen.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.09, 'top': 0.2}, border=(0, 0, 0, 0))
+        self.replay_button = Button(background_normal='KIVYG/images/wiederholen.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.09, 'top': 0.2}, border=(0, 0, 0, 0))
         self.replay_button.bind(on_press=self.on_replay_button_click)
         self.layout.add_widget(self.replay_button)
         self.restart_sig_box = CustomLabel(text=f'Signal gererieren', size_hint=(None, None), size=(300, 70), pos_hint={'center_x': 0.09, 'top': 0.3}, color=(1, 1, 1, 1) )
         self.layout.add_widget(self.restart_sig_box)
         self.restart_sig = Label(text=f'Neues Signal \n gererieren', size_hint=(None, None), size=(300, 70), pos_hint={'center_x': 0.09, 'top': 0.3}, color=(1, 1, 1, 1), font_size='20sp')
         self.layout.add_widget(self.restart_sig)
-        self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
         self.layout.add_widget(self.signal_win)
         # Function to generate the animation in a separate thread
         #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
@@ -252,13 +252,13 @@ class SignalclassifierApp(App):
             test=1
             if test == 1:
                 test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
-                print("Test beendet, GUI wird aktualisiert.")
+                print("Test beendet, KIVYG wird aktualisiert.")
                 Clock.unschedule(start_test)
             else:
                 pass
         test= 1
         Clock.schedule_interval(start_test, 5)
-        self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
         self.layout.add_widget(self.signal_win)
         # Function to generate the animation in a separate thread
         #
