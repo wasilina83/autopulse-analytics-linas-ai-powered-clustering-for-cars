@@ -115,11 +115,11 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
-        self.text_label3 = Label(text=f'Signalgenerator \n        starten', font_size=win_h*.06, pos_hint={'center_x': .3, 'top': .5}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.text_label3 = Label(text=f'Signalgenerator \n        starten', font_size=win_h*.06, pos_hint={'center_x': .3, 'top': .7}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
-        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(win_h*.35, win_h*.35), pos_hint={'center_x': .3, 'top': .5}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(win_h*.35, win_h*.35), pos_hint={'center_x': .3, 'top': .6}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
 
