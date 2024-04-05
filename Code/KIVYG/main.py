@@ -20,6 +20,10 @@ import os
 from functools import partial
 import time
 from makeSig import generate_custom_waveform_and_plot
+from kivy.core.text import FontContextManager as FCM
+
+# Create a font context containing system fonts + one custom TTF
+
 
 
 class SignalclassifierLayout(RelativeLayout):
@@ -111,7 +115,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
-        self.text_label3 = Label(text=f'Signalgenerator \n      starten', font_size=win_h*.06, pos_hint={'center_x': .5, 'top': 1})
+        self.text_label3 = Label(text=f'Signalgenerator \n        starten', font_size=win_h*.06, pos_hint={'center_x': .5, 'top': 1}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
