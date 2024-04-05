@@ -107,7 +107,7 @@ class SignalclassifierApp(App):
         # Load the image for the logo (with transparent background)
         self.logo = Image(source='GUI/images/lolgo.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), pos_hint={'center_x': 0.49, 'top': 1.4})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
+        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.5, win_h*.5), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
@@ -115,7 +115,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
-        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(win_h*.5, win_h*.5), pos_hint={'center_x': 1, 'top':  .35}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(win_h*.2, win_h*.2), pos_hint={'center_x': 1, 'top':  .35}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
 
