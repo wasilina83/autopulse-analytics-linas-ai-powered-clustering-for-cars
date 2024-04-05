@@ -102,28 +102,20 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.background)
 
         # Add a text label before the image
-        window_width, window_height = Window.size
-        text_size = int(min(window_width, window_height * .1))
-        text_pos_x = window_width * .5
-        text_pos_y = window_height * .75
+        win_w, win_h = Window.size
+
         # Load the image for the logo (with transparent background)
-        logo_size = int(window_width*1.6)  # 20% of the smaller dimension
-        prolab_size = int(window_width*0.7)
-        logo_pos_x = window_width * 0.1
-        logo_pos_y = window_height * 0.5  # 50% of the height
-        self.logo = Image(source='GUI/images/lolgo.png', size_hint=(None, None), size=(logo_size, logo_size), pos_hint={'center_x': 0.49, 'top': 1.4})
+        self.logo = Image(source='GUI/images/lolgo.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), pos_hint={'center_x': 0.49, 'top': 1.4})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(prolab_size, prolab_size), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
+        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .45})
         self.layout.add_widget(self.prolab)
 
         # Add other widgets or elements if needed
-        self.text_label3 = Label(text='Analyse starten', font_size=text_size*.8, pos_hint={'center_x': text_pos_x / window_width -.15, 'top':  1})
+        self.text_label3 = Label(text='Analyse starten', font_size=win_h*.8, pos_hint={'center_x': 1, 'top':  1})
         self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
-        play_button_size = int(min(window_width, window_height)*.4)  # 10% of the smaller dimension
-        play_button_pos_x = window_width * 0.9
-        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(play_button_size, play_button_size), pos_hint={'center_x': text_pos_x / window_width -.15, 'top':  .35}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='GUI/images/play.png', size_hint=(None, None), size=(win_h*.1, win_h*.1), pos_hint={'center_x': 1, 'top':  .35}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
 
