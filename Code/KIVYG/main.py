@@ -141,8 +141,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.logo)
 
         # Add Sliders for the parameters
-        self.amplitude_slider = CustomSlider(min=3, max=5, step=.25, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.055)), pos_hint={'center_x': 0.2, 'top': 0.835})
-        self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.055)), pos_hint={'center_x': 0.2, 'top': 0.705})
+        self.amplitude_slider = CustomSlider(min=3, max=5, step=.25, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.065)), pos_hint={'center_x': 0.2, 'top': 0.835})
+        self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.065)), pos_hint={'center_x': 0.2, 'top': 0.705})
         # self.offset_slider = CustomSlider(min=-1, max=1, step=.1, orientation='horizontal', size_hint=(None, None), size=(500, 60), pos_hint={'center_x': 0.2, 'top': 0.6})
         # self.phase_shift_slider = CustomSlider(min=0, max=2*math.pi, step=math.pi/8, orientation='horizontal', size_hint=(None, None), size=(500, 60), pos_hint={'center_x': 0.2, 'top': 0.5})
         self.layout.add_widget(self.amplitude_slider)
