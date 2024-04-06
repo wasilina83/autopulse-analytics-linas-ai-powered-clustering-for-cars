@@ -207,21 +207,21 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
 
-        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': 0.15}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': .15}, color=(1, 1, 1, 1))
+        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': 0.15}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': .15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
         # Load the Play button
-        self.rem_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.18, window_height*.18), pos_hint={'center_x': 0.1, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.rem_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.1, 'top': 0.28}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         
-        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.62}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .62}, color=(1, 1, 1, 1))
+        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.62}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .62}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
         # Load the Play button
-        self.ok_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.18, window_height*.18), pos_hint={'center_x': 0.17, 'top': 0.2}, border=(0, 0, 0, 0))
+        self.ok_button = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.17, 'top': 0.2}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
         
@@ -232,7 +232,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.18, window_height*.18), pos_hint={'center_x': 0.25, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.25, 'top': 0.28}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
         # Animation
