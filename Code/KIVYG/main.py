@@ -185,7 +185,7 @@ class SignalclassifierApp(App):
         # self.offset_label_box = CustomLabel( size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1))
         # self.phase_shift_label_box = CustomLabel(size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1))
         self.setup_param_box = CustomLabel(text=f'Sätze die Parameter nach wunsch', size_hint=(None, None), size=(int(window_width*.35), int(window_height*.06)), pos_hint={'center_x': 0.2, 'top': .96}, color=(1, 1, 1, 1))
-        self.start_sig_box = CustomLabel(text=f'Signal gererieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.25, 'top': 0.399}, color=(1, 1, 1, 1))
+        self.start_sig_box = CustomLabel(text=f'Signal gererieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.25, 'top': 0.44}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.amplitude_label_box)
@@ -195,7 +195,7 @@ class SignalclassifierApp(App):
         # self.offset_label = Label(text=f'Offset: {self.offset_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1), font_size='15sp')
         # self.phase_shift_label = Label(text=f'Phasenverschiebung: {self.phase_shift_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1), font_size='15sp')
         self.setup_param_label = Label(text=f'Sätze die Parameter nach Wunsch', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='16sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.start_sig = Label(text=f'     Signal \ngenerieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.25, 'top': 0.399}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.start_sig = Label(text=f'     Signal \ngenerieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.25, 'top': 0.44}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.start_sig)
         self.layout.add_widget(self.setup_param_label)
         self.layout.add_widget(self.amplitude_label)
@@ -207,8 +207,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
 
-        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.15, 'top': 0.399}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.15, 'top': 0.399}, color=(1, 1, 1, 1))
+        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.12, 'top': 0.44}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.12, 'top': 0.44}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
         # Load the Play button
