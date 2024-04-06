@@ -141,8 +141,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.logo)
 
         # Add Sliders for the parameters
-        self.amplitude_slider = CustomSlider(min=3, max=5, step=.25, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.8})
-        self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.7})
+        self.amplitude_slider = CustomSlider(min=3, max=5, step=.25, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.83})
+        self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.7})
         # self.offset_slider = CustomSlider(min=-1, max=1, step=.1, orientation='horizontal', size_hint=(None, None), size=(500, 60), pos_hint={'center_x': 0.2, 'top': 0.6})
         # self.phase_shift_slider = CustomSlider(min=0, max=2*math.pi, step=math.pi/8, orientation='horizontal', size_hint=(None, None), size=(500, 60), pos_hint={'center_x': 0.2, 'top': 0.5})
         self.layout.add_widget(self.amplitude_slider)
@@ -151,8 +151,8 @@ class SignalclassifierApp(App):
         # self.layout.add_widget(self.phase_shift_slider)
         
         # Add Labels for the Slider values
-        self.amplitude_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.84}, color=(1, 1, 1, 1))
-        self.frequency_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.74}, color=(1, 1, 1, 1))
+        self.amplitude_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.89}, color=(1, 1, 1, 1))
+        self.frequency_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1))
         # self.offset_label_box = CustomLabel( size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1))
         # self.phase_shift_label_box = CustomLabel(size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1))
         self.setup_param_box = CustomLabel(text=f'Sätze die Parameter nach wunsch', size_hint=(None, None), size=(int(window_width*.35), int(window_height*.06)), pos_hint={'center_x': 0.2, 'top': .96}, color=(1, 1, 1, 1))
@@ -163,8 +163,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.frequency_label_box)
         # self.layout.add_widget(self.offset_label_box)
         # self.layout.add_widget(self.phase_shift_label_box)
-        self.amplitude_label = Label(text=f'Amplitude: {self.amplitude_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.84}, color=(1, 1, 1, 1), font_size='15sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.74}, color=(1, 1, 1, 1), font_size='15sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.amplitude_label = Label(text=f'Amplitude: {self.amplitude_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.89}, color=(1, 1, 1, 1), font_size='15sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1), font_size='15sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         # self.offset_label = Label(text=f'Offset: {self.offset_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1), font_size='15sp')
         # self.phase_shift_label = Label(text=f'Phasenverschiebung: {self.phase_shift_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1), font_size='15sp')
         self.setup_param_label = Label(text=f'Sätze die Parameter nach Wunsch', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='20sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
@@ -177,7 +177,7 @@ class SignalclassifierApp(App):
         # self.layout.add_widget(self.phase_shift_label)
 
         # Add a Combobox for signal type
-        signal_types = ['Battelrie', 'Lichtmaschine']
+        signal_types = ['Batterie', 'Lichtmaschine']
         self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(300, 50), pos_hint={'center_x': 0.2, 'top': 0.4}, background_color=(0, 0.2745, 0.9412, 1), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
