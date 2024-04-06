@@ -207,12 +207,12 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
 
-        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.12, 'top': 0.44}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.12, 'top': 0.44}, color=(1, 1, 1, 1))
+        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.1, 'top': 0.44}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.1, 'top': 0.44}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
         # Load the Play button
-        self.rem_button = Button(background_normal='KIVYG/images/wiederholen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.1, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.rem_button = Button(background_normal='KIVYG/images/wiederholen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.98, 'top': 0.33}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         
@@ -232,7 +232,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.25, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.25, 'top': 0.33}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
         # Animation
