@@ -210,7 +210,7 @@ class SignalclassifierApp(App):
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
         
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.1), int(window_width*.03)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.3), int(window_width*.03)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
@@ -248,7 +248,7 @@ class SignalclassifierApp(App):
         def start_test(dt):
             test=1
             if test == 1:
-                test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
+                test = genSigPNG(signal_type, duration, amplitude, frequency)
             else:
                 print("Test beendet, KIVYG wird aktualisiert.")
                 Clock.unschedule(start_test)    # Hier können Sie Ihre KIVYG-Update-Logik einfügen
@@ -266,7 +266,7 @@ class SignalclassifierApp(App):
         # Function to generate the animation in a separate thread
         #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Perform the animation based on the read parameters
-        print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
+        print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Signaltyp: {signal_type}')
         
         return self.layout
     
