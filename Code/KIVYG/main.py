@@ -202,12 +202,12 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.frequency_label)
         # self.layout.add_widget(self.offset_label)
         # self.layout.add_widget(self.phase_shift_label)
-        self.setup_sig_label = Label(text=f'Wähle das Signal aus', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.399}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_sig_label = Label(text=f'Wähle das Signal aus', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.399}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.setup_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .399}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
 
-        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': 0.15}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': 0.15}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.15, 'top': .15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
@@ -216,7 +216,7 @@ class SignalclassifierApp(App):
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         
-        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.62}, color=(1, 1, 1, 1), font_size='11sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.62}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.16), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .62}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
@@ -228,7 +228,7 @@ class SignalclassifierApp(App):
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
         
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.06)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.045)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
