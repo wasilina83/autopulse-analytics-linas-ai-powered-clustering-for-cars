@@ -53,7 +53,7 @@ class CustomLabel(Label):
         # Initialize the rectangle with graphics instructions
         with self.canvas:
             Color(0, 0.2745, 0.9412, 1)  # Set the color to blue
-            self.rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[(20, 20), (20, 20), (20, 20), (20, 20)])
+            self.rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[(5, 5), (5, 5), (5,5), (5,5)])
 
         # Update the rectangle when the size or position changes
         self.bind(pos=self.on_size, size=self.on_size)
@@ -77,7 +77,7 @@ class CustomSlider(Slider):
         # Initialize the rectangle with graphics instructions
         with self.canvas.before:
             Color(0, 0.2745, 0.9412, 1)  # Set the color to blue
-            self.rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[(10, 10), (10, 10), (10, 10), (10, 10)])
+            self.rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[(5, 5), (5, 5), (5, 5), (5, 5)])
 
         # Update the rectangle when the size or position changes
         self.bind(pos=self.update_rect, size=self.update_rect)
