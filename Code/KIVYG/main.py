@@ -210,11 +210,11 @@ class SignalclassifierApp(App):
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
         
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.03)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.08)), pos_hint={'center_x': 0.2, 'top': 0.55}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.25, 'top': 0.2}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.2, window_height*.2), pos_hint={'center_x': 0.25, 'top': 0.3}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
         # Animation
