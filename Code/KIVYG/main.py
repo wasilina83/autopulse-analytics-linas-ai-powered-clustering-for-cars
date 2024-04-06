@@ -178,7 +178,7 @@ class SignalclassifierApp(App):
 
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(300, 50), pos_hint={'center_x': 0.2, 'top': 0.4}, background_color=(0, 0.2745, 0.9412, 1), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(300, 50), pos_hint={'center_x': 0.2, 'top': 0.4}, background_color=(0, 0.2745, 0.9412, 1), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf', radius=[20,20,20,20])
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
