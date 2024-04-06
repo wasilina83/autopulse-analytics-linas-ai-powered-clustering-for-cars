@@ -214,7 +214,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.signal_type_spinner)
 
         # Load the Play button
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.2, window_height*.2), pos_hint={'center_x': 0.25, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.18, window_height*.18), pos_hint={'center_x': 0.25, 'top': 0.28}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
         # Animation
