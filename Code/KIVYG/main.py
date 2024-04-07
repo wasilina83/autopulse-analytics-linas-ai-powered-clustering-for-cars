@@ -9,8 +9,6 @@ from kivy.animation import Animation
 from kivy.uix.slider import Slider
 from kivy.uix.spinner import Spinner
 from kivy.clock import Clock
-import sys
-sys.path.insert(0, 'DataMaker')
 from SignalGenerator import signal_functions, pron, genSigPNG
 import math
 from kivy.graphics import RoundedRectangle, Color, Rectangle
@@ -23,7 +21,7 @@ from makeSig import generate_custom_waveform_and_plot
 from kivy.core.text import FontContextManager as FCM
 from functools import partial
 import kivy.utils as utils
-
+import random
 # Create a font context containing system fonts + one custom TTF
 
 
@@ -95,8 +93,7 @@ class CustomSlider(Slider):
 class SignalclassifierApp(App):
     
     def build(self):
-        
-    
+        self.signal_win = None
         # Set the window to fullscreen mode
         Window.fullscreen = 'auto'
         self.orientation = 'vertical'
@@ -235,62 +232,115 @@ class SignalclassifierApp(App):
         self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.3, 'top': 0.33}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
+        self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.layout.add_widget(self.boby)
         # Animation
         # Animation for the new background image
         new_animation = Animation(x=0, duration=1)
         new_animation.start(self.new_background)
         Clock.schedule_once(self.delayed_appearance, 1.5)
         # Set the opacity of all widgets to 0
-        for widget in [self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, self.play_button2, self.signal_type_spinner, self.setup_param_label,
+        for widget in [self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
+                        self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
+                        self.play_button2, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
                         self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
             widget.opacity = 0
 
         return self.layout
+
     def on_rem_button_click(self, instance):
-        pass
+    # Define the range and step for random amplitude and frequency
+        amplitude_min = 3
+        amplitude_max = 5
+        amplitude_step = 0.25
+        frequency_min = 159
+        frequency_max = 165
+        frequency_step = 1
+        
+        # Generate random amplitude and frequency
+        amplitude = round(random.uniform(amplitude_min, amplitude_max) / amplitude_step) * amplitude_step
+        frequency = round(random.uniform(frequency_min, frequency_max) / frequency_step) * frequency_step
+        
+        signal_type = self.signal_type_spinner.text
+        old_gif_path = 'KIVYG/images/animation.gif'
+        
+        # Delete the old GIF
+        if self.signal_win is not None:
+            self.layout.remove_widget(self.signal_win)
+            self.signal_win = None  
+        generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
+        
+        # Wait for the new GIF to be generated
+
+        # Remove the placeholder image and display the new GIF
+        if os.path.exists(old_gif_path):
+            if self.boby is not None:
+                self.layout.remove_widget(self.boby)
+            self.signal_win = Image(source='KIVYG/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.layout.add_widget(self.signal_win)
+        self.signal_win.reload()
+    
     def on_ok_button_click(self, instnce):
-        pass
+        # Ok Signals are [positive Signal in beiden Fällen bei einer Amplitude von 4 und einer Frequenz von 164]
+        amplitude = 4
+        frequency = 164
+        signal_type = self.signal_type_spinner.text
+        old_gif_path = 'KIVYG/images/animation.gif'
+        # Löschen des alten GIF
+        if self.signal_win is not None:
+            self.layout.remove_widget(self.signal_win)
+            self.signal_win =None
+        
+        generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
+        if os.path.exists(old_gif_path):
+            if self.boby is not None:
+                self.layout.remove_widget(self.boby)
+            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.layout.add_widget(self.signal_win)
+        self.signal_win.reload()
+
+
+
+
+
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
-        for widget in [self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, self.play_button2, self.signal_type_spinner, self.setup_param_label,
-                    self.amplitude_label, self.frequency_label, self.amplitude_label_box,
-                    self.frequency_label_box, self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
+        for widget in [self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box, 
+                        self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
+                        self.play_button2, self.signal_type_spinner, self.setup_param_label,
+                        self.amplitude_label, self.frequency_label, self.amplitude_label_box,
+                        self.frequency_label_box,
+                        self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
             Animation(opacity=1, duration=1).start(widget)
-    
+
 
     def on_play_button_click2(self, instance):
         # Read parameters
         amplitude = self.amplitude_slider.value
         frequency = self.frequency_slider.value
         signal_type = self.signal_type_spinner.text
-        duration = 3
-        def start_test(dt):
-            test=1
-            if test == 1:
-                test = genSigPNG(signal_type, duration, amplitude, frequency)
-            else:
-                print("Test beendet, KIVYG wird aktualisiert.")
-                Clock.unschedule(start_test)    # Hier können Sie Ihre KIVYG-Update-Logik einfügen
-        test=1        
-        Clock.schedule_interval(start_test, 5)  # Überprüfen Sie jede 0,1 Sekunde, ob 'test'
-        self.replay_button = Button(background_normal='KIVYG/images/wiederholen.png', size_hint=(None, None), size=(150, 150), pos_hint={'center_x': 0.09, 'top': 0.2}, border=(0, 0, 0, 0))
-        self.replay_button.bind(on_press=self.on_replay_button_click)
-        self.layout.add_widget(self.replay_button)
-        self.restart_sig_box = CustomLabel(text=f'Signal gererieren', size_hint=(None, None), size=(300, 70), pos_hint={'center_x': 0.09, 'top': 0.3}, color=(1, 1, 1, 1) )
-        self.layout.add_widget(self.restart_sig_box)
-        self.restart_sig = Label(text=f'Neues Signal \n gererieren', size_hint=(None, None), size=(300, 70), pos_hint={'center_x': 0.09, 'top': 0.3}, color=(1, 1, 1, 1), font_size='20sp')
-        self.layout.add_widget(self.restart_sig)
-        self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
-        self.layout.add_widget(self.signal_win)
+        old_gif_path = 'KIVYG/images/animation.gif'
+        if self.signal_win is not None:
+            self.layout.remove_widget(self.signal_win)
+            self.signal_win =None
+        
+        generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
+        if os.path.exists(old_gif_path):
+            if self.boby is not None:
+                self.layout.remove_widget(self.boby)
+            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.layout.add_widget(self.signal_win)
+        self.signal_win.reload()
+        
         # Function to generate the animation in a separate thread
         #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Signaltyp: {signal_type}')
         
         return self.layout
-    
+
     def on_replay_button_click(self, instanze):
         # Read parameters
         self.layout.remove_widget(self.signal_win)
@@ -318,8 +368,8 @@ class SignalclassifierApp(App):
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
         return self.layout
-    
-    
+
+
         
 
 if __name__ == '__main__':
