@@ -223,13 +223,13 @@ class SignalclassifierApp(App):
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': .2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.263}, border=(0, 0, 0, 0))
+        self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.268}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
         
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.04)), pos_hint={'center_x': 0.2, 'top': 0.585}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.04)), pos_hint={'center_x': 0.2, 'top': 0.583}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
         self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
