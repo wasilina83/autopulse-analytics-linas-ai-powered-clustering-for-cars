@@ -154,8 +154,8 @@ class SignalclassifierApp(App):
         self.amplitude_slider = CustomSlider(min=3, max=5, step=.25,  orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.065)), pos_hint={'center_x': 0.2, 'top': 0.835})
         
         self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(window_width*.33), int(window_height*.065)), pos_hint={'center_x': 0.2, 'top': 0.705})
-        self.amplitude_label = Label(text=f'Amplitude: {self.amplitude_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.89}, color=(1, 1, 1, 1), font_size='13sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1), font_size='13sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.amplitude_label = Label(text=f'Amplitude: {self.amplitude_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.89}, color=(1, 1, 1, 1), font_size='14sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1), font_size='14sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         
         def OnamplitudeValueChange(instance, value):
             
@@ -177,24 +177,33 @@ class SignalclassifierApp(App):
         # Add Labels for the Slider values
         self.amplitude_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.89}, color=(1, 1, 1, 1))
         self.frequency_label_box = CustomLabel(size_hint=(None, None), size=(int(window_width*.33), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1))
+        self.layout.add_widget(self.amplitude_label_box)
+        self.layout.add_widget(self.frequency_label_box)
         # self.offset_label_box = CustomLabel( size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1))
         # self.phase_shift_label_box = CustomLabel(size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1))
         self.setup_param_box = CustomLabel(text=f'Sätze deine Parameter', size_hint=(None, None), size=(int(window_width*.35), int(window_height*.06)), pos_hint={'center_x': 0.2, 'top': .96}, color=(1, 1, 1, 1))
-        self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.3, 'top': 0.46}, color=(1, 1, 1, 1))
-        self.layout.add_widget(self.start_sig_box)
+        self.setup_param_label = Label(text=f'Sätze die Parameter', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='16sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.layout.add_widget(self.setup_param_label)
         self.layout.add_widget(self.setup_param_box)
-        self.layout.add_widget(self.amplitude_label_box)
-        self.layout.add_widget(self.frequency_label_box)
+        self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.3, 'top': 0.46}, color=(1, 1, 1, 1))
+        self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.3, 'top': 0.45}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.3, 'top': 0.39}, border=(0, 0, 0, 0))
+        self.play_button2.bind(on_press=self.on_play_button_click2)
+        self.layout.add_widget(self.start_sig_box)
+        self.layout.add_widget(self.start_sig)
+        self.layout.add_widget(self.play_button2)
+        
         # self.layout.add_widget(self.offset_label_box)
         # self.layout.add_widget(self.phase_shift_label_box)
         # self.offset_label = Label(text=f'Offset: {self.offset_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.64}, color=(1, 1, 1, 1), font_size='15sp')
         # self.phase_shift_label = Label(text=f'Phasenverschiebung: {self.phase_shift_slider.value}', size_hint=(None, None), size=(500, 45), pos_hint={'center_x': 0.2, 'top': 0.54}, color=(1, 1, 1, 1), font_size='15sp')
-        self.setup_param_label = Label(text=f'Sätze die Parameter', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='16sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.3, 'top': 0.45}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.layout.add_widget(self.start_sig)
-        self.layout.add_widget(self.setup_param_label)
+        
+        
+        
+        
         self.layout.add_widget(self.amplitude_label)
         self.layout.add_widget(self.frequency_label)
+
         # self.layout.add_widget(self.offset_label)
         # self.layout.add_widget(self.phase_shift_label)
         self.setup_sig_label = Label(text=f'Wähle das Komponenze aus', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.63}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
@@ -209,26 +218,20 @@ class SignalclassifierApp(App):
         self.rem_button = Button(background_normal='KIVYG/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.09, 'top': 0.44}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
-        
-        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.2, 'top': 0.25}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.12), int(window_height*.07)), pos_hint={'center_x': 0.2, 'top': .25}, color=(1, 1, 1, 1))
+        #Richtiges Signal
+        self.rig_sig_label = Label(text=f'Richtiges Signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.2, 'top': 0.25}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.2, 'top': .25}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        # Load the Play button
         self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.2, 'top': 0.15}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
         
         # Add a Combobox for signal type
         signal_types = ['Batterie', 'Lichtmaschine']
-        
         self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.04)), pos_hint={'center_x': 0.2, 'top': 0.585}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.signal_type_spinner)
 
-        # Load the Play button
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.3, 'top': 0.33}, border=(0, 0, 0, 0))
-        self.play_button2.bind(on_press=self.on_play_button_click2)
-        self.layout.add_widget(self.play_button2)
         self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
         self.layout.add_widget(self.boby)
         # Animation
