@@ -201,12 +201,11 @@ class SignalclassifierApp(App):
         self.setup_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .635}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
-
-        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.1, 'top': 0.44}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        #Zufals Signal
+        self.rem_sig_label = Label(text=f'Zufals Signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.1, 'top': 0.3}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.1, 'top': 0.44}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        # Load the Play button
         self.rem_button = Button(background_normal='KIVYG/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.09, 'top': 0.44}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
