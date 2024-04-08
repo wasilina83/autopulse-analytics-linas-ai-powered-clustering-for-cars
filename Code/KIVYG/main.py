@@ -134,8 +134,6 @@ class SignalclassifierApp(App):
         App.get_running_app().stop()
         quit()
          
-
-
     def on_play_button_click(self, instance):
         
         # Remove the Play button and Label3
@@ -232,7 +230,7 @@ class SignalclassifierApp(App):
         self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.3, 'top': 0.33}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.play_button2)
-        self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+        self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
         self.layout.add_widget(self.boby)
         # Animation
         # Animation for the new background image
@@ -278,7 +276,7 @@ class SignalclassifierApp(App):
         if os.path.exists(old_gif_path):
             if self.boby is not None:
                 self.layout.remove_widget(self.boby)
-            self.signal_win = Image(source='KIVYG/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.signal_win = Image(source='KIVYG/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
     
@@ -297,13 +295,9 @@ class SignalclassifierApp(App):
         if os.path.exists(old_gif_path):
             if self.boby is not None:
                 self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
-
-
-
-
 
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
@@ -330,7 +324,7 @@ class SignalclassifierApp(App):
         if os.path.exists(old_gif_path):
             if self.boby is not None:
                 self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
+            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
         
@@ -339,34 +333,6 @@ class SignalclassifierApp(App):
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Signaltyp: {signal_type}')
         
-        return self.layout
-
-    def on_replay_button_click(self, instanze):
-        # Read parameters
-        self.layout.remove_widget(self.signal_win)
-        amplitude = self.amplitude_slider.value
-        frequency = self.frequency_slider.value
-        offset = self.offset_slider.value
-        phase_shift = self.phase_shift_slider.value
-        signal_type = self.signal_type_spinner.text
-        duration = 3
-        def start_test(dt):
-            test=1
-            if test == 1:
-                test = genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
-                print("Test beendet, KIVYG wird aktualisiert.")
-                Clock.unschedule(start_test)
-            else:
-                pass
-        test= 1
-        Clock.schedule_interval(start_test, 5)
-        self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.55, .55), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.85})
-        self.layout.add_widget(self.signal_win)
-        # Function to generate the animation in a separate thread
-        #
-        #generate_custom_waveform_and_plot(signal_type, duration, amplitude, frequency, offset, phase_shift)
-        # Perform the animation based on the read parameters
-        print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Offset: {offset}, Phasenverschiebung: {phase_shift}, Signaltyp: {signal_type}')
         return self.layout
 
 
