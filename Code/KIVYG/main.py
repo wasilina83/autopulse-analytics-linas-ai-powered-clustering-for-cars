@@ -206,7 +206,7 @@ class SignalclassifierApp(App):
 
         # self.layout.add_widget(self.offset_label)
         # self.layout.add_widget(self.phase_shift_label)
-        self.setup_sig_label = Label(text=f'Wähle das Komponenze aus', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.63}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_sig_label = Label(text=f'Wähle die Komponente aus:', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.63}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.setup_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .635}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.setup_sig_box)
         self.layout.add_widget(self.setup_sig_label)
@@ -223,7 +223,7 @@ class SignalclassifierApp(App):
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': .2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.268}, border=(0, 0, 0, 0))
+        self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.27}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
         
