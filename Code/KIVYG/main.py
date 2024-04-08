@@ -218,9 +218,11 @@ class SignalclassifierApp(App):
 
         self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.1), int(window_width*.1)), pos_hint={'center_x': 0.265, 'top': 0.23})
         self.layout.add_widget(self.car)
-        self.sig= Image(source='KIVYG/images/sg.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.28})
+        self.sig= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.28})
         self.layout.add_widget(self.sig)
+        Clock.schedule_interval(self.toggle_image_visibility, 3)  # 3 Sekunden Intervall
 
+    
 
         # Animation
         # Animation for the new background image
@@ -228,7 +230,8 @@ class SignalclassifierApp(App):
         new_animation.start(self.new_background)
         Clock.schedule_once(self.delayed_appearance, 1.5)
         # Set the opacity of all widgets to 0
-        for widget in [self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
+        for widget in [self.sig,
+                       self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
                         self.play_button2, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
@@ -237,6 +240,12 @@ class SignalclassifierApp(App):
             widget.opacity = 0
 
         return self.layout
+    
+    def toggle_image_visibility(self, dt):
+        if self.sig.opacity == 1:  # Wenn das Bild sichtbar ist
+            self.sig.opacity = 0    # Bild ausblenden
+        else:
+            self.sig.opacity = 1    # Bild wieder anzeigen
 
     def on_rem_button_click(self, instance):
     # Define the range and step for random amplitude and frequency
