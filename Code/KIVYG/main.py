@@ -104,6 +104,7 @@ class SignalclassifierApp(App):
         # Add the image to the layout
         self.layout.add_widget(self.background)
 
+
         # Add a text label before the image
         win_w, win_h = Window.size
 
