@@ -218,10 +218,10 @@ class SignalclassifierApp(App):
 
         self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.09), int(window_width*.09)), pos_hint={'center_x': 0.265, 'top': 0.23})
         self.layout.add_widget(self.car)
-        self.sig= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.285})
+        self.sig= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
         self.layout.add_widget(self.sig)
         Clock.schedule_interval(self.toggle_image_visibility, 3)  # 3 Sekunden Intervall
-        self.sigg= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.285})
+        self.sigg= Image(source='KIVYG/images/sgp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
         
     
 
@@ -248,9 +248,16 @@ class SignalclassifierApp(App):
         else:
             self.sig.opacity = 1    # Bild wieder anzeigen
 
+    def toggle_image_visibility2(self, dt):
+        if self.sigg.opacity == 1:  # Wenn das Bild sichtbar ist
+            self.sigg.opacity = 0    # Bild ausblenden
+        else:
+            self.sigg.opacity = 1    # Bild wieder anzeigen
+
+
     def on_rem_button_click(self, instance):
         self.layout.add_widget(self.sigg)
-        Clock.schedule_interval(self.toggle_image_visibility, 3)
+        Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
 
     # Define the range and step for random amplitude and frequency
@@ -287,7 +294,7 @@ class SignalclassifierApp(App):
     
     def on_ok_button_click(self, instnce):
         self.layout.add_widget(self.sigg)
-        Clock.schedule_interval(self.toggle_image_visibility, 3)
+        Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
         # Ok Signals are [positive Signal in beiden Fällen bei einer Amplitude von 4 und einer Frequenz von 164]
         amplitude = 4
@@ -320,7 +327,7 @@ class SignalclassifierApp(App):
 
     def on_play_button_click2(self, instance):
         self.layout.add_widget(self.sigg)
-        Clock.schedule_interval(self.toggle_image_visibility, 3)
+        Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
         # Read parameters
         amplitude = self.amplitude_slider.value
