@@ -216,7 +216,7 @@ class SignalclassifierApp(App):
         self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
         self.layout.add_widget(self.boby)
 
-        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.12), int(window_width*.12)), pos_hint={'center_x': 0.34, 'top': 0.28})
+        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.12), int(window_width*.12)), pos_hint={'center_x': 0.28, 'top': 0.28})
         self.layout.add_widget(self.car)
 
 
@@ -226,7 +226,7 @@ class SignalclassifierApp(App):
         new_animation.start(self.new_background)
         Clock.schedule_once(self.delayed_appearance, 1.5)
         # Set the opacity of all widgets to 0
-        for widget in [self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
+        for widget in [self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
                         self.play_button2, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
@@ -289,7 +289,7 @@ class SignalclassifierApp(App):
 
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
-        for widget in [self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box, 
+        for widget in [self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box, 
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
                         self.play_button2, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
