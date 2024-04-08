@@ -215,6 +215,11 @@ class SignalclassifierApp(App):
 
         self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
         self.layout.add_widget(self.boby)
+
+        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.12), int(window_width*.12)), pos_hint={'center_x': 0.34, 'top': 0.28})
+        self.layout.add_widget(self.car)
+
+
         # Animation
         # Animation for the new background image
         new_animation = Animation(x=0, duration=1)
