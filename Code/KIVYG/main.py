@@ -220,6 +220,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.car)
         self.sig= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
         self.layout.add_widget(self.sig)
+        Clock.schedule_interval(self.toggle_image_visibility, 2)
     
 
         # Animation
@@ -247,13 +248,7 @@ class SignalclassifierApp(App):
 
 
     def on_rem_button_click(self, instance):
-        window_width, window_height = Window.size
-        self.sig= Image(source='KIVYG/images/sg.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
-        self.sig.reload()
-        Clock.schedule_interval(self.toggle_image_visibility, 2)
-        
-
-    # Define the range and step for random amplitude and frequency
+        # Define the range and step for random amplitude and frequency
     
         amplitude_min = 3
         amplitude_max = 5
@@ -284,13 +279,11 @@ class SignalclassifierApp(App):
             self.signal_win = Image(source='KIVYG/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
+        self.sig.source='KIVYG/images/sg.png'
+        self.sig.reload()
+        
     
     def on_ok_button_click(self, instnce):
-        window_width, window_height = Window.size
-        self.sig= Image(source='KIVYG/images/sg.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
-        self.layout.add_widget(self.sig)
-        Clock.schedule_interval(self.toggle_image_visibility2, 3)
-        self.sig.reload()
         # Ok Signals are [positive Signal in beiden Fällen bei einer Amplitude von 4 und einer Frequenz von 164]
         amplitude = 4
         frequency = 164
@@ -308,7 +301,9 @@ class SignalclassifierApp(App):
             self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
-
+        self.sig.source='KIVYG/images/sg.png'
+        self.sig.reload()
+        
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
         for widget in [self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box, 
@@ -321,10 +316,6 @@ class SignalclassifierApp(App):
 
 
     def on_play_button_click2(self, instance):
-        window_width, window_height = Window.size
-        self.sig= Image(source='KIVYG/images/sg.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
-        self.sig.reload()
-        Clock.schedule_interval(self.toggle_image_visibility, 3)
         
         # Read parameters
         amplitude = self.amplitude_slider.value
@@ -346,7 +337,8 @@ class SignalclassifierApp(App):
         # Function to generate the animation in a separate thread
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Signaltyp: {signal_type}')
-        
+        self.sig.source='KIVYG/images/sg.png'
+        self.sig.reload()
         return self.layout
 
 
