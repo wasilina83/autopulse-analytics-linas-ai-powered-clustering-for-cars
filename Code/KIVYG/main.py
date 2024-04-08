@@ -216,7 +216,7 @@ class SignalclassifierApp(App):
         self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
         self.layout.add_widget(self.boby)
 
-        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.1), int(window_width*.1)), pos_hint={'center_x': 0.265, 'top': 0.27})
+        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.1), int(window_width*.1)), pos_hint={'center_x': 0.265, 'top': 0.23})
         self.layout.add_widget(self.car)
         self.sig= Image(source='KIVYG/images/sg.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.28})
         self.layout.add_widget(self.sig)
