@@ -256,6 +256,11 @@ class SignalclassifierApp(App):
 
 
     def on_rem_button_click(self, instance):
+        window_width, window_height = Window.size
+        self.sigg= Image(source='KIVYG/images/sgp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
+        
+        self.layout.add_widget(self.sig)
+
         self.layout.add_widget(self.sigg)
         Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
@@ -293,6 +298,11 @@ class SignalclassifierApp(App):
         self.signal_win.reload()
     
     def on_ok_button_click(self, instnce):
+        window_width, window_height = Window.size
+        self.sigg= Image(source='KIVYG/images/sgp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
+        
+        self.layout.add_widget(self.sig)
+
         self.layout.add_widget(self.sigg)
         Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
@@ -326,6 +336,9 @@ class SignalclassifierApp(App):
 
 
     def on_play_button_click2(self, instance):
+        window_width, window_height = Window.size
+        self.sigg= Image(source='KIVYG/images/sgp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
+        self.layout.add_widget(self.sig)
         self.layout.add_widget(self.sigg)
         Clock.schedule_interval(self.toggle_image_visibility2, 3)
         self.layout.remove_widget(self.sig)
