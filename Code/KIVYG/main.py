@@ -187,7 +187,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
         self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.37, 'top': 0.486}, border=(0, 0, 0, 0))
+        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.33, 'top': 0.486}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.start_sig)
