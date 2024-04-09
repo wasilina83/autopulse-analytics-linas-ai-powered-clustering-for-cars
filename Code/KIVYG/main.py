@@ -109,14 +109,10 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(win_h*1.65, win_h*1.65), pos_hint={'center_x': .49, 'top': 1.6})
+        self.logo = Image(source='KIVYG/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(win_h*1.65, win_h*1.65), pos_hint={'center_x': .49, 'top': 1.6})
         self.layout.add_widget(self.logo)
         self.prolab = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(win_h*.65, win_h*.65), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .46})
         self.layout.add_widget(self.prolab)
-
-        # Add other widgets or elements if needed
-        self.text_label3 = Label(text=f'Starten', font_size=win_h*.06, pos_hint={'center_x': .29, 'top': .7}, font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.layout.add_widget(self.text_label3)
 
         # Load the image for the Play button
         self.play_button = Button(background_normal='KIVYG/images/play1.png', size_hint=(None, None), size=(win_h*.28, win_h*.28), pos_hint={'center_x': .3, 'top': .6}, border=(0, 0, 0, 0))
@@ -136,7 +132,6 @@ class SignalclassifierApp(App):
         
         # Remove the Play button and Label3
         self.layout.remove_widget(self.play_button)
-        self.layout.remove_widget(self.text_label3)
         self.layout.remove_widget(self.logo)
 
         # Load the new background image
@@ -144,7 +139,7 @@ class SignalclassifierApp(App):
         
         self.new_background = Image(source='KIVYG/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
         self.layout.add_widget(self.new_background)
-        self.logo = Image(source='KIVYG/images/lolgo.png', size_hint=(None, None), size=(int(window_width*.4), int(window_width*.4)), pos_hint={'center_x': .78, 'top': 1.2})
+        self.logo = Image(source='KIVYG/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(int(window_width*.4), int(window_width*.4)), pos_hint={'center_x': .78, 'top': 1.2})
         self.layout.add_widget(self.logo)
         
         
@@ -179,11 +174,15 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
         self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2 = Button(background_normal='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.34, 'top': 0.488}, border=(0, 0, 0, 0))
+        self.play_button2_image = Image(source='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.34, 'top': 0.488})
+        self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.29, 'top': 0.488}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.start_sig)
+        self.layout.add_widget(self.play_button2_image)
         self.layout.add_widget(self.play_button2)
+        
+
                
         self.layout.add_widget(self.amplitude_label)
         self.layout.add_widget(self.frequency_label)
@@ -197,7 +196,9 @@ class SignalclassifierApp(App):
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.408}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button = Button(background_normal='KIVYG/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.16, 'top': 0.49}, border=(0, 0, 0, 0))
+        self.rem_button_image = Image(source='KIVYG/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.16, 'top': 0.49})
+        self.layout.add_widget(self.rem_button_image)
+        self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.257, window_height*.19), pos_hint={'center_x': 0.12, 'top': 0.49}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         #Richtiges Signal
@@ -205,7 +206,9 @@ class SignalclassifierApp(App):
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': .2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button = Button(background_normal='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.28}, border=(0, 0, 0, 0))
+        self.ok_button_image = Image(source='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.28})
+        self.layout.add_widget(self.ok_button_image)
+        self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.11, 'top': 0.28}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
         
@@ -231,9 +234,9 @@ class SignalclassifierApp(App):
         Clock.schedule_once(self.delayed_appearance, 1.5)
         # Set the opacity of all widgets to 0
         for widget in [self.sig,
-                       self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box,
+                       self.car, self.boby, self.ok_button_image,self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box,
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
-                        self.play_button2, self.signal_type_spinner, self.setup_param_label,
+                        self.play_button2, self.play_button2_image, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
                         self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
@@ -307,9 +310,9 @@ class SignalclassifierApp(App):
         
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
-        for widget in [self.car, self.boby, self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_sig_box, 
+        for widget in [self.car, self.boby, self.ok_button, self.ok_button_image, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box, 
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
-                        self.play_button2, self.signal_type_spinner, self.setup_param_label,
+                        self.play_button2, self.play_button2_image, self.signal_type_spinner, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
                         self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
