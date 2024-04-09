@@ -23,8 +23,7 @@
 
    Öffnen Sie das Skript `makeSig.py` mit einem Editor (z. B. `nvim`) und ändern Sie die IP-Adresse entsprechend:
 
-   ```bash
-   nvim ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/Code/KIVYG/makeSig.py
+   ```nvim ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/Code/KIVYG/makeSig.py```
    Ändern Sie die IP-Adresse des Red Pitaya-Boards entsprechend.
 
 ![Bild 4](image-3.png)
@@ -32,7 +31,7 @@
 ## 5. Aktivieren der Python Virtual Environment
 
 Aktivieren Sie die Python Virtual Environment mit dem folgenden Befehl:
-``source ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/venv/bin/activat``
+```source ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/venv/bin/activat```
 
 ## 6. Wechseln zum Code-Verzeichnis
 
