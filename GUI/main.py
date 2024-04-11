@@ -109,14 +109,14 @@ class SignalclassifierApp(App):
         # Load the image for the logo (with transparent background)
         self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', allow_stretch=True, keep_ratio=True, size_hint=(.75, .75),  pos_hint={'center_x': .4, 'top': .986})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.98, win_h*.98), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.15, 'top': .37})
+        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.98, win_h*.98), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.159, 'top': .37})
         self.layout.add_widget(self.prolab)
 
         # Load the image for the Play button
         self.play_button = Button(background_normal='GUI/images/play1.png', size_hint=(None, None), size=(win_h*.58, win_h*.58), pos_hint={'center_x': .5, 'top': .5}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
-        self.esxit_button = Button(background_normal='GUI/images/schaltflache-abbrechen.png', size_hint=(None, None), size=(win_h*.05, win_h*.05), pos_hint={'center_x': .98, 'top': .991}, border=(0, 0, 0, 0) )
+        self.esxit_button = Button(background_normal='GUI/images/schaltflache-abbrechen.png', size_hint=(None, None), size=(win_h*.2, win_h*.2),  pos_hint={'center_x': .96, 'top': .991}, border=(0, 0, 0, 0) )
         self.esxit_button.bind(on_press = self.on_exit_click)
         self.layout.add_widget(self.esxit_button)
 
