@@ -1,0 +1,143 @@
+<MyScreenManager>:
+    transition: FadeTransition()
+    SignalclassifierLayout:
+    SelectionScreen:
+
+<SignalclassifierLayout>:
+    orientation: 'vertical'
+    RelativeLayout:
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'GUI/images/BG.png'
+        Image:
+            source: 'GUI/images/BG.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: root.size
+            
+        Image:
+            id: logo
+            source: 'GUI/images/logo.png'
+            size_hint: None, None
+            size: root.logo_size, root.logo_size
+            pos_hint: {'center_x': 0.49, 'top': 1.4}
+
+        Image:
+            id: prolab
+            source: 'GUI/images/prolab.png'
+            size_hint: None, None
+            size: root.prolab_size, root.prolab_size
+            pos_hint: {'center_x': 0.8, 'top': .45}
+
+        Label:
+            id: text_label3
+            text: 'Analyse starten'
+            font_size: root.text_size * .8
+            pos_hint: {'center_x': root.text_pos_x / root.width -.15, 'top': 1}
+
+        Button:
+            id: play_button
+            background_normal: 'GUI/images/play.png'
+            size_hint: None, None
+            size: root.play_button_size, root.play_button_size
+            pos_hint: {'center_x': root.text_pos_x / root.width -.15, 'top': .35}
+            border: (0, 0, 0, 0)
+            on_press: root.on_play_button_click()
+
+        Spinner:
+            id: signal_type_spinner
+            text: 'Hupe'
+            values: ['Schuhe', 'Hupe', 'Gepäck']
+            size_hint: None, None
+            size: 300, 50
+            pos_hint: {'center_x': 0.2, 'top': 0.4}
+            background_color: 0, 0.2745, 0.9412, 1
+            outline_color: 0, 0.2745, 0.9412, 1
+            disabled_outline_color: 0, 0.2745, 0.9412, 1
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: start_sig_box
+            text: 'Signal gererieren'
+            size_hint: None, None
+            size: 300, 70
+            pos_hint: {'center_x': 0.25, 'top': 0.3}
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: setup_param_box
+            text: 'Sätze die Parameter nach wunsch'
+            size_hint: None, None
+            size: 500, 65
+            pos_hint: {'center_x': 0.2, 'top': 0.9}
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: amplitude_label_box
+            text: 'Amplitude: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.84}
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: frequency_label_box
+            text: 'Frequenz: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.74}
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: offset_label_box
+            text: 'Offset: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.64}
+            color: 1, 1, 1, 1
+
+        CustomLabel:
+            id: phase_shift_label_box
+            text: 'Phasenverschiebung: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.54}
+            color: 1, 1, 1, 1
+
+        Label:
+            id: amplitude_label
+            text: 'Amplitude: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.84}
+            color: 1, 1, 1, 1
+            font_size: '15sp'
+
+        Label:
+            id: frequency_label
+            text: 'Frequenz: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.74}
+            color: 1, 1, 1, 1
+            font_size: '15sp'
+
+        Label:
+            id: offset_label
+            text: 'Offset: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.64}
+            color: 1, 1, 1, 1
+            font_size: '15sp'
+
+        Label:
+            id: phase_shift_label
+            text: 'Phasenverschiebung: '
+            size_hint: None, None
+            size: 500, 45
+            pos_hint: {'center_x': 0.2, 'top': 0.54}
+            color: 1, 1, 1, 1
+            font_size: '15sp'
