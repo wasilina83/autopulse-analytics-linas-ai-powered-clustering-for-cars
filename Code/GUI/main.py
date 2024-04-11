@@ -224,11 +224,11 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.ok_button)
 
         
-        self.bat_button = MyButton(background_color=(255,255,255), font_size=25,text='Battery', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.5, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
+        self.bat_button = MyButton(background_color=(255,255,255), font_size=25,text='Battery', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.52, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
         self.bat_button.bind(on_press=self.on_but_button_click)
         self.layout.add_widget(self.bat_button)
         
-        self.Lichtmaschine_button = MyButton(background_color=(255,255,255), font_size=25,text='Alternator', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.7, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
+        self.Lichtmaschine_button = MyButton(background_color=(255,255,255), font_size=25,text='Alternator', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.68, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
         self.Lichtmaschine_button.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.Lichtmaschine_button)
         
