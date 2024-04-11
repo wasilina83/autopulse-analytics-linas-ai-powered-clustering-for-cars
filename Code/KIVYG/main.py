@@ -9,7 +9,6 @@ from kivy.animation import Animation
 from kivy.uix.slider import Slider
 from kivy.uix.spinner import Spinner
 from kivy.clock import Clock
-from SignalGenerator import signal_functions, pron, genSigPNG
 import math
 from kivy.graphics import RoundedRectangle, Color, Rectangle
 from kivy.uix.video import Video
