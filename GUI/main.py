@@ -107,9 +107,9 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', allow_stretch=True, keep_ratio=True, size_hint=(.75, .75),  pos_hint={'center_x': .49, 'top': 1.15})
+        self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', allow_stretch=True, keep_ratio=True, size_hint=(.75, .75),  pos_hint={'center_x': .49, 'top': .9})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.78, win_h*.78), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.19, 'top': .46})
+        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*1.58, win_h*1.58), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.19, 'top': .46})
         self.layout.add_widget(self.prolab)
 
         # Load the image for the Play button
