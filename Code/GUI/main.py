@@ -24,10 +24,8 @@ import random
 from kivy.properties import StringProperty, ObjectProperty
 # Create a font context containing system fonts + one custom TTF
 
-
-
 class SignalclassifierLayout(RelativeLayout):
-    def refreshWindow(self, signal_type, duration, amplitude, frequency, offset, phase_shift):
+    def refreshWindow(self):
         # Pfad zum alten GIF
         old_gif_path = 'GUI/images/animation.gif'
         
@@ -167,9 +165,10 @@ class SignalclassifierApp(App):
             self.amplitude_label.text = f"Amplitude: {value}"
 
     # Define the OnfrequencyValueChange function outside of the on_play_button_click method
-        def OnfrequencyValueChange(instance,  value):
-            
-            self.frequency_label.text = f"Frequenz: {value}"
+        def OnfrequencyValueChange(instance,  value): 
+            self.frequency_label.text = f"Frequency: {value}"
+
+
         self.frequency_slider.bind(value=OnfrequencyValueChange)
         self.amplitude_slider.bind(value=OnamplitudeValueChange)
         self.layout.add_widget(self.amplitude_slider)
@@ -181,11 +180,11 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.amplitude_label_box)
         self.layout.add_widget(self.frequency_label_box)
         self.setup_param_box = CustomLabel(text=f'Sätze deine Parameter', size_hint=(None, None), size=(int(window_width*.35), int(window_height*.06)), pos_hint={'center_x': 0.2, 'top': .96}, color=(1, 1, 1, 1))
-        self.setup_param_label = Label(text=f'Parameter setzen', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='16sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_label = Label(text=f'Set parameters', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.96}, color=(1, 1, 1, 1), font_size='16sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
-        self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.start_sig = Label(text=f'Generate custom signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.34, 'top': 0.488})
         self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.29, 'top': 0.488}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
@@ -199,12 +198,12 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.amplitude_label)
         self.layout.add_widget(self.frequency_label)
 
-        self.setup_sig_label = Label(text=f'Komponente wählen', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.63}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.setup_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .635}, color=(1, 1, 1, 1))
-        self.layout.add_widget(self.setup_sig_box)
-        self.layout.add_widget(self.setup_sig_label)
-        #Zufals Signal
-        self.rem_sig_label = Label(text=f'Zufallssignal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        # self.setup_sig_label = Label(text=f'Komponente wählen', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': 0.63}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        # self.setup_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.05)), pos_hint={'center_x': 0.2, 'top': .635}, color=(1, 1, 1, 1))
+        # self.layout.add_widget(self.setup_sig_box)
+        # self.layout.add_widget(self.setup_sig_label)
+        # #Zufals Signal
+        self.rem_sig_label = Label(text=f'Random signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.408}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
@@ -214,7 +213,7 @@ class SignalclassifierApp(App):
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         #Richtiges Signal
-        self.rig_sig_label = Label(text=f'Referenzsignal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.2}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rig_sig_label = Label(text=f'Reference signal', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.2}, color=(1, 1, 1, 1), font_size='13sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': .2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
@@ -229,7 +228,7 @@ class SignalclassifierApp(App):
         self.bat_button.bind(on_press=self.on_but_button_click)
         self.layout.add_widget(self.bat_button)
         
-        self.Lichtmaschine_button = MyButton(background_color=(255,255,255), font_size=25,text='Lichtmaschine', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.7, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
+        self.Lichtmaschine_button = MyButton(background_color=(255,255,255), font_size=25,text='Alternator', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.7, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
         self.Lichtmaschine_button.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.Lichtmaschine_button)
         
@@ -256,7 +255,7 @@ class SignalclassifierApp(App):
         # Set the opacity of all widgets to 0
         for widget in [self.sig,
                        self.car,  self.ok_button_image,self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box,
-                        self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
+                        self.rem_sig_label, self.start_sig_box, self.start_sig, 
                         self.play_button2, self.play_button2_image, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
@@ -338,7 +337,7 @@ class SignalclassifierApp(App):
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
         for widget in [self.car,  self.ok_button, self.ok_button_image, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box, 
-                        self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
+                        self.rem_sig_label, self.start_sig_box, self.start_sig, 
                         self.play_button2, self.play_button2_image, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
