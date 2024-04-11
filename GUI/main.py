@@ -107,7 +107,7 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(win_h*2.5, win_h*2.5), pos_hint={'center_x': .49, 'top': 1.3})
+        self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', allow_stretch=True, size_hint=(2, 2),  pos_hint={'center_x': .49, 'top': 1.3})
         self.layout.add_widget(self.logo)
         self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.65, win_h*.65), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.1, 'top': .46})
         self.layout.add_widget(self.prolab)
