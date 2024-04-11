@@ -31,7 +31,7 @@
 ## 5. Aktivieren der Python Virtual Environment
 
 Aktivieren Sie die Python Virtual Environment mit dem folgenden Befehl:
-```source ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/venv/bin/activat```
+```source ~/repos/autopulse-analytics-linas-ai-powered-clustering-for-cars/venv/bin/activate```
 
 ## 6. Wechseln zum Code-Verzeichnis
 

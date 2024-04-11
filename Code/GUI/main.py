@@ -21,6 +21,7 @@ from kivy.core.text import FontContextManager as FCM
 from functools import partial
 import kivy.utils as utils
 import random
+from kivy.properties import StringProperty, ObjectProperty
 # Create a font context containing system fonts + one custom TTF
 
 
@@ -28,20 +29,31 @@ import random
 class SignalclassifierLayout(RelativeLayout):
     def refreshWindow(self, signal_type, duration, amplitude, frequency, offset, phase_shift):
         # Pfad zum alten GIF
-        old_gif_path = 'KIVYG/images/animation.gif'
+        old_gif_path = 'GUI/images/animation.gif'
         
         # Löschen des alten GIF
         if os.path.exists(old_gif_path):
             os.remove(old_gif_path)
-        
-        # Generieren des neuen GIF
-        genSigPNG(signal_type, duration, amplitude, frequency, offset, phase_shift)
+
         
         # Aktualisieren der Bildquelle im Kivy-Layout
         self.ids.gif.source = old_gif_path
 
         # Neuzeichnen des Bildes
         self.ids.gif.reload()
+
+
+        
+
+class MyButton(Button):
+
+    rectangle = ObjectProperty(None)
+    def __init__(self, **kwargs):
+        super(MyButton, self).__init__(**kwargs)
+        with self.canvas:
+            self.rectangle = RoundedRectangle(radius=[(5, 5), (5, 5), (5,5), (5,5)])
+
+
         
 class CustomLabel(Label):
     def __init__(self, **kwargs):
@@ -96,9 +108,10 @@ class SignalclassifierApp(App):
         self.orientation = 'vertical'
         # Create a RelativeLayout as the main layout
         self.layout = RelativeLayout()
+        self.signal_type = StringProperty('')
 
         # Load the background image
-        self.background = Image(source='KIVYG/images/BG.png', allow_stretch=True, keep_ratio=False)
+        self.background = Image(source='GUI/images/BG.png', allow_stretch=True, keep_ratio=False)
 
         # Add the image to the layout
         self.layout.add_widget(self.background)
@@ -108,16 +121,16 @@ class SignalclassifierApp(App):
         win_w, win_h = Window.size
 
         # Load the image for the logo (with transparent background)
-        self.logo = Image(source='KIVYG/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(win_h*1.65, win_h*1.65), pos_hint={'center_x': .49, 'top': 1.6})
+        self.logo = Image(source='GUI/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(win_h*1.65, win_h*1.65), pos_hint={'center_x': .49, 'top': 1.6})
         self.layout.add_widget(self.logo)
-        self.prolab = Image(source='KIVYG/images/prolab.png', size_hint=(None, None), size=(win_h*.65, win_h*.65), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.8, 'top': .46})
+        self.prolab = Image(source='GUI/images/prolab.png', size_hint=(None, None), size=(win_h*.65, win_h*.65), allow_stretch=True, keep_ratio=True, pos_hint={'center_x': 0.1, 'top': .46})
         self.layout.add_widget(self.prolab)
 
         # Load the image for the Play button
-        self.play_button = Button(background_normal='KIVYG/images/play1.png', size_hint=(None, None), size=(win_h*.28, win_h*.28), pos_hint={'center_x': .3, 'top': .6}, border=(0, 0, 0, 0))
+        self.play_button = Button(background_normal='GUI/images/play1.png', size_hint=(None, None), size=(win_h*.28, win_h*.28), pos_hint={'center_x': .3, 'top': .6}, border=(0, 0, 0, 0))
         self.play_button.bind(on_press=self.on_play_button_click)
         self.layout.add_widget(self.play_button)
-        self.esxit_button = Button(background_normal='KIVYG/images/schaltflache-abbrechen.png', size_hint=(None, None), size=(win_h*.05, win_h*.05), pos_hint={'center_x': .98, 'top': .991}, border=(0, 0, 0, 0) )
+        self.esxit_button = Button(background_normal='GUI/images/schaltflache-abbrechen.png', size_hint=(None, None), size=(win_h*.05, win_h*.05), pos_hint={'center_x': .98, 'top': .991}, border=(0, 0, 0, 0) )
         self.esxit_button.bind(on_press = self.on_exit_click)
         self.layout.add_widget(self.esxit_button)
 
@@ -136,9 +149,10 @@ class SignalclassifierApp(App):
         # Load the new background image
         window_width, window_height = Window.size
         
-        self.new_background = Image(source='KIVYG/images/BGWeis.png', allow_stretch=True, keep_ratio=False, x=-Window.width, size_hint_x=0.5)
+        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, size_hint_x=0.2,  pos_hint={'right': 1})
+        self.new_background.x=Window.width - self.new_background.texture_size[0]
         self.layout.add_widget(self.new_background)
-        self.logo = Image(source='KIVYG/images/Autowerkstatt_Logo_White-768x179.png', size_hint=(None, None), size=(int(window_width*.4), int(window_width*.4)), pos_hint={'center_x': .78, 'top': 1.2})
+        self.logo = Image(source='GUI/images/lmis-ag-gf-logo-autowerkstatt-vierpunktnull-cmyk-de.png', size_hint=(None, None), size=(int(window_width*.4), int(window_width*.4)), pos_hint={'right':1.15, 'top': 0.9})
         self.layout.add_widget(self.logo)
         
         
@@ -150,7 +164,6 @@ class SignalclassifierApp(App):
         self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(window_width*.25), int(window_height*.045)), pos_hint={'center_x': 0.2, 'top': 0.76}, color=(1, 1, 1, 1), font_size='14sp',font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         
         def OnamplitudeValueChange(instance, value):
-            
             self.amplitude_label.text = f"Amplitude: {value}"
 
     # Define the OnfrequencyValueChange function outside of the on_play_button_click method
@@ -173,7 +186,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
         self.start_sig = Label(text=f'Generieren', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1), font_size='13sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2_image = Image(source='KIVYG/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.34, 'top': 0.488})
+        self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.34, 'top': 0.488})
         self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.29, 'top': 0.488}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
@@ -195,7 +208,7 @@ class SignalclassifierApp(App):
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': 0.408}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button_image = Image(source='KIVYG/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.16, 'top': 0.49})
+        self.rem_button_image = Image(source='GUI/images/rem.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.16, 'top': 0.49})
         self.layout.add_widget(self.rem_button_image)
         self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.257, window_height*.19), pos_hint={'center_x': 0.12, 'top': 0.49}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
@@ -205,23 +218,32 @@ class SignalclassifierApp(App):
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(window_width*.13), int(window_height*.1)), pos_hint={'center_x': 0.098, 'top': .2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button_image = Image(source='KIVYG/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.28})
+        self.ok_button_image = Image(source='GUI/images/uberprufen.png', size_hint=(None, None), size=(window_height*.12, window_height*.12), pos_hint={'center_x': 0.148, 'top': 0.28})
         self.layout.add_widget(self.ok_button_image)
         self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.11, 'top': 0.28}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
+
+        
+        self.bat_button = MyButton(background_color=(255,255,255), font_size=25,text='Battery', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.5, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
+        self.bat_button.bind(on_press=self.on_but_button_click)
+        self.layout.add_widget(self.bat_button)
+        
+        self.Lichtmaschine_button = MyButton(background_color=(255,255,255), font_size=25,text='Lichtmaschine', size_hint=(None, None), size=(window_height*.256, window_height*.19), pos_hint={'center_x': 0.7, 'top': 0.28}, color=utils.get_color_from_hex('#0046F0'))
+        self.Lichtmaschine_button.bind(on_press=self.on_Lichtmaschine_button_click)
+        self.layout.add_widget(self.Lichtmaschine_button)
         
         # Add a Combobox for signal type
-        signal_types = ['Batterie', 'Lichtmaschine']
-        self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.04)), pos_hint={'center_x': 0.2, 'top': 0.583}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.layout.add_widget(self.signal_type_spinner)
+        # signal_types = ['Batterie', 'Lichtmaschine']
+        # self.signal_type_spinner = Spinner(text='Lichtmaschine', values=signal_types, size_hint=(None, None), size=(int(window_width*.2), int(window_width*.04)), pos_hint={'center_x': 0.2, 'top': 0.583}, background_color=utils.get_color_from_hex('#0046F0'), outline_color=(0, 0.2745, 0.9412, 1), disabled_outline_color=(0, 0.2745, 0.9412, 1), color='white', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        # self.layout.add_widget(self.signal_type_spinner)
 
-        self.boby= Image(source='KIVYG/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
-        self.layout.add_widget(self.boby)
+        #self.boby= Image(source='GUI/images/boby.png',size_hint=(.45, .45), allow_stretch=True, pos_hint={'center_x': 0.67, 'top': 0.8})
+        #self.layout.add_widget(self.boby)
 
-        self.car= Image(source='KIVYG/images/car.png',size_hint=(None, None), size=(int(window_width*.09), int(window_width*.09)), pos_hint={'center_x': 0.265, 'top': 0.23})
+        self.car= Image(source='GUI/images/car.png',size_hint=(None, None), size=(int(window_width*.09), int(window_width*.09)), pos_hint={'center_x': 0.265, 'top': 0.23})
         self.layout.add_widget(self.car)
-        self.sig= Image(source='KIVYG/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
+        self.sig= Image(source='GUI/images/skp.png',size_hint=(None, None), size=(int(window_width*.06), int(window_width*.06)), pos_hint={'center_x': 0.265, 'top': 0.289})
         self.layout.add_widget(self.sig)
         Clock.schedule_interval(self.toggle_image_visibility, 2)
     
@@ -233,9 +255,9 @@ class SignalclassifierApp(App):
         Clock.schedule_once(self.delayed_appearance, 1.5)
         # Set the opacity of all widgets to 0
         for widget in [self.sig,
-                       self.car, self.boby, self.ok_button_image,self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box,
+                       self.car,  self.ok_button_image,self.ok_button, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box,
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
-                        self.play_button2, self.play_button2_image, self.signal_type_spinner, self.setup_param_label,
+                        self.play_button2, self.play_button2_image, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
                         self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
@@ -248,6 +270,12 @@ class SignalclassifierApp(App):
             self.sig.opacity = 0    # Bild ausblenden
         else:
             self.sig.opacity = 1    # Bild wieder anzeigen
+
+    def on_but_button_click(self,instance):
+        self.signal_type = 'Batterie'
+
+    def on_Lichtmaschine_button_click(self, instance):
+        self.signal_type = 'Lichtmaschine'
 
 
     def on_rem_button_click(self, instance):
@@ -264,8 +292,8 @@ class SignalclassifierApp(App):
         amplitude = round(random.uniform(amplitude_min, amplitude_max) / amplitude_step) * amplitude_step
         frequency = round(random.uniform(frequency_min, frequency_max) / frequency_step) * frequency_step
         
-        signal_type = self.signal_type_spinner.text
-        old_gif_path = 'KIVYG/images/animation.gif'
+        signal_type = self.signal_type
+        old_gif_path = 'GUI/images/animation.gif'
         
         # Delete the old GIF
         if self.signal_win is not None:
@@ -277,12 +305,12 @@ class SignalclassifierApp(App):
 
         # Remove the placeholder image and display the new GIF
         if os.path.exists(old_gif_path):
-            if self.boby is not None:
-                self.layout.remove_widget(self.boby)
-            self.signal_win = Image(source='KIVYG/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+            # if self.boby is not None:
+            #     self.layout.remove_widget(self.boby)
+            self.signal_win = Image(source='GUI/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
-        self.sig.source='KIVYG/images/sg.png'
+        self.sig.source='GUI/images/sg.png'
         self.sig.reload()
         
     
@@ -290,8 +318,8 @@ class SignalclassifierApp(App):
         # Ok Signals are [positive Signal in beiden Fällen bei einer Amplitude von 4 und einer Frequenz von 164]
         amplitude = 4
         frequency = 164
-        signal_type = self.signal_type_spinner.text
-        old_gif_path = 'KIVYG/images/animation.gif'
+        signal_type = self.signal_type
+        old_gif_path = 'GUI/images/animation.gif'
         # Löschen des alten GIF
         if self.signal_win is not None:
             self.layout.remove_widget(self.signal_win)
@@ -299,19 +327,19 @@ class SignalclassifierApp(App):
         
         generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
         if os.path.exists(old_gif_path):
-            if self.boby is not None:
-                self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+            # if self.boby is not None:
+            #     self.layout.remove_widget(self.boby)
+            self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
-        self.sig.source='KIVYG/images/sg.png'
+        self.sig.source='GUI/images/sg.png'
         self.sig.reload()
         
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
-        for widget in [self.car, self.boby, self.ok_button, self.ok_button_image, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box, 
+        for widget in [self.car,  self.ok_button, self.ok_button_image, self.rig_sig_box, self.rig_sig_label, self.rem_button, self.rem_button_image, self.rem_sig_box, 
                         self.rem_sig_label, self.setup_sig_label, self.setup_sig_box, self.start_sig_box, self.start_sig, 
-                        self.play_button2, self.play_button2_image, self.signal_type_spinner, self.setup_param_label,
+                        self.play_button2, self.play_button2_image, self.setup_param_label,
                         self.amplitude_label, self.frequency_label, self.amplitude_label_box,
                         self.frequency_label_box,
                         self.setup_param_box, self.amplitude_slider, self.frequency_slider]:
@@ -323,24 +351,24 @@ class SignalclassifierApp(App):
         # Read parameters
         amplitude = self.amplitude_slider.value
         frequency = self.frequency_slider.value
-        signal_type = self.signal_type_spinner.text
-        old_gif_path = 'KIVYG/images/animation.gif'
+        signal_type = self.signal_type
+        old_gif_path = 'GUI/images/animation.gif'
         if self.signal_win is not None:
             self.layout.remove_widget(self.signal_win)
             self.signal_win =None
         
         generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
         if os.path.exists(old_gif_path):
-            if self.boby is not None:
-                self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='KIVYG/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+            # if self.boby is not None:
+            #     self.layout.remove_widget(self.boby)
+            self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
             self.layout.add_widget(self.signal_win)
         self.signal_win.reload()
         
         # Function to generate the animation in a separate thread
         # Perform the animation based on the read parameters
         print(f'Amplitude: {amplitude}, Frequenz: {frequency}, Signaltyp: {signal_type}')
-        self.sig.source='KIVYG/images/sg.png'
+        self.sig.source='GUI/images/sg.png'
         self.sig.reload()
         return self.layout
 
