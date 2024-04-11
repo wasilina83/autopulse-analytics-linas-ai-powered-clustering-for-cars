@@ -172,10 +172,10 @@ class SignalclassifierApp(App):
         self.setup_param_label.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
-        self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.width*.13), int(Window.height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
-        self.start_sig = Label(text=f'Generate custom signal', size_hint=(None, None), size=(int(Window.width*.13), int(Window.height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=utils.get_color_from_hex('#0046F0'), font_size='15sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.34, 'top': 0.488})
-        self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(Window.height*.15, Window.height*.19), pos_hint={'center_x': 0.29, 'top': 0.488}, border=(0, 0, 0, 0))
+        self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.width*.4), int(Window.height*.12)), pos_hint={'center_x': 0.7, 'top': 0.208}, color=(1, 1, 1, 1))
+        self.start_sig = Label(text=f'Generate custom signal', size_hint=(None, None), size=(int(Window.width*.4), int(Window.height*.12)), pos_hint={'center_x': 0.7, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='22sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(Window.height*.16, Window.height*.16), pos_hint={'center_x': 0.52, 'top': 0.288})
+        self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(Window.height*.15, Window.height*.19), pos_hint={'center_x': 0.53, 'top': 0.288}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.start_sig)
@@ -277,13 +277,11 @@ class SignalclassifierApp(App):
 
     def on_Lichtmaschine_button_click(self, instance):
         self.signal_type = 'Lichtmaschine'
-    
         self.setup_param_label.text = f'The {self.Lichtmaschine_button_label.text.lower()} was selected'
 
 
     def on_rem_button_click(self, instance):
         # Define the range and step for random amplitude and frequency
-    
         amplitude_min = 3
         amplitude_max = 5
         amplitude_step = 0.25
