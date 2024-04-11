@@ -168,6 +168,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.frequency_label_box)
         self.setup_param_box = CustomLabel(text=f'Sätze deine Parameter', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .76})
         self.setup_param_label = Label(text=f'Select an vehicle component and set parameters', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.76}, color=utils.get_color_from_hex('#0046F0'), font_size='22sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_label.text.bind(on_press=self.on_but_button_click)
+        self.setup_param_label.text.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.width*.13), int(Window.height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
@@ -271,9 +273,11 @@ class SignalclassifierApp(App):
 
     def on_but_button_click(self,instance):
         self.signal_type = 'Batterie'
+        self.setup_param_label.text = f'The {self.signal_type} was selected'
 
     def on_Lichtmaschine_button_click(self, instance):
         self.signal_type = 'Lichtmaschine'
+        self.setup_param_label.text = f'The {self.signal_type} was selected'
 
 
     def on_rem_button_click(self, instance):
