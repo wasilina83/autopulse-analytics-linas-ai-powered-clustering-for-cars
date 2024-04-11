@@ -135,7 +135,7 @@ class SignalclassifierApp(App):
 
         # Load the new background image
         
-        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, size_hint_x=0.2,  pos_hint={'right': 1.05})
+        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, size_hint_x=0.2,  pos_hint={'right': 1.15})
         self.new_background.x=Window.width - self.new_background.texture_size[0]
         self.layout.add_widget(self.new_background)
         self.logo = Image(source='GUI/images/lmis-ag-gf-logo-autowerkstatt-vierpunktnull-cmyk-de.png', size_hint=(None, None), size=(int(Window.width*.4), int(Window.width*.4)), pos_hint={'right':1.125, 'top': 0.9})
