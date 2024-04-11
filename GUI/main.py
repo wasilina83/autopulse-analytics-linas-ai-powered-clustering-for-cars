@@ -131,19 +131,19 @@ class SignalclassifierApp(App):
         # Remove the Play button and Label3
         self.layout.remove_widget(self.play_button)
         self.layout.remove_widget(self.logo)
+        self.layout.remove_widget(self.esxit_button)
 
         # Load the new background image
         
-        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, size_hint_x=0.2,  pos_hint={'right': 1})
+        self.new_background = Image(source='GUI/images/BGWeis.png', allow_stretch=True, keep_ratio=False, size_hint_x=0.2,  pos_hint={'right': 1.05})
         self.new_background.x=Window.width - self.new_background.texture_size[0]
         self.layout.add_widget(self.new_background)
-        self.logo = Image(source='GUI/images/lmis-ag-gf-logo-autowerkstatt-vierpunktnull-cmyk-de.png', size_hint=(None, None), size=(int(Window.width*.4), int(Window.width*.4)), pos_hint={'right':1.15, 'top': 0.9})
+        self.logo = Image(source='GUI/images/lmis-ag-gf-logo-autowerkstatt-vierpunktnull-cmyk-de.png', size_hint=(None, None), size=(int(Window.width*.4), int(Window.width*.4)), pos_hint={'right':1.125, 'top': 0.9})
         self.layout.add_widget(self.logo)
         
         
         # Add Sliders for the parameters
         self.amplitude_slider = CustomSlider(min=3, max=5, step=.25,  orientation='horizontal', size_hint=(None, None), size=(int(Window.width*.53), int(Window.height*.065)), pos_hint={'center_x': 0.425, 'top': 0.635}, value_track_color=utils.get_color_from_hex('#0046F0'))
-        
         self.frequency_slider = CustomSlider(min=159, max=165, step=1, orientation='horizontal', size_hint=(None, None), size=(int(Window.width*.53), int(Window.height*.065)), pos_hint={'center_x': 0.425, 'top': 0.505}, value_track_color=utils.get_color_from_hex('#0046F0'))
         self.amplitude_label = Label(text=f'Amplitude: {self.amplitude_slider.value}', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.045)), pos_hint={'center_x': 0.425, 'top': 0.69}, color=utils.get_color_from_hex('#0046F0'), font_size='18sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.frequency_label = Label(text=f'Frequenz: {self.frequency_slider.value}', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.045)), pos_hint={'center_x': 0.425, 'top': 0.56}, color=utils.get_color_from_hex('#0046F0'), font_size='18sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
@@ -167,7 +167,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.amplitude_label_box)
         self.layout.add_widget(self.frequency_label_box)
         self.setup_param_box = CustomLabel(text=f'Sätze deine Parameter', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .76})
-        self.setup_param_label = Label(text=f'Set parameters', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.76}, color=utils.get_color_from_hex('#0046F0'), font_size='18sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_label = Label(text=f'Select an vehicle component and set parameters', size_hint=(None, None), size=(int(Window.width*.55), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.76}, color=utils.get_color_from_hex('#0046F0'), font_size='18sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.width*.13), int(Window.height*.1)), pos_hint={'center_x': 0.28, 'top': 0.408}, color=(1, 1, 1, 1))
