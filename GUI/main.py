@@ -175,7 +175,7 @@ class SignalclassifierApp(App):
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=(1, 1, 1, 1))
         self.start_sig = Label(text=f'Generate custom signal', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='25sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(int(Window.height*.16), int(Window.height*.16)), pos_hint={'center_x': 0.52, 'top': 0.288})
-        self.play_button2 = Button( background_color= (0, 0, 0, 1), size_hint=(None, None), size=(int(Window.height*.5), (Window.height*.19)), pos_hint={'center_x': 0.53, 'top': 0.288}, border=(0, 0, 0, 0))
+        self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.5), (Window.height*.19)), pos_hint={'center_x': 0.59, 'top': 0.288}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.start_sig)
@@ -198,7 +198,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.rem_sig_label)
         self.rem_button_image = Image(source='GUI/images/rem.png', size_hint=(None, None), size=(Window.height*.14, Window.height*.14), pos_hint={'center_x': 0.36, 'top': 0.99})
         self.layout.add_widget(self.rem_button_image)
-        self.rem_button = Button(background_color= (0, 0, 0, 1), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.25, 'top': 0.99}, border=(0, 0, 0, 0))
+        self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.25, 'top': 0.99}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         #Richtiges Signal
@@ -208,7 +208,7 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.rig_sig_label)
         self.ok_button_image = Image(source='GUI/images/uberprufen.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.648, 'top': 0.99})
         self.layout.add_widget(self.ok_button_image)
-        self.ok_button = Button(background_color= (0, 0, 0, 1), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.61, 'top': 0.99}, border=(0, 0, 0, 0))
+        self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.61, 'top': 0.99}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
 
@@ -239,13 +239,13 @@ class SignalclassifierApp(App):
         
 
         self.car= Image(source='GUI/images/car.png',size_hint=(None, None), size=(int(Window.width*.09), int(Window.width*.09)), pos_hint={'center_x': 0.265+.1, 'top': 0.23})
-        self.layout.add_widget(self.car)
+        #self.layout.add_widget(self.car)
         self.sig= Image(source='GUI/images/skp.png',size_hint=(None, None), size=(int(Window.width*.06), int(Window.width*.06)), pos_hint={'center_x': 0.265+.1, 'top': 0.289})
-        self.layout.add_widget(self.sig)
+        #self.layout.add_widget(self.sig)
         Clock.schedule_interval(self.toggle_image_visibility, 2)
         self.esxit_button2 = Button(background_normal='GUI/images/schaltflache-abbrechen.png', size_hint=(None, None), size=(Window.height*.05, Window.height*.05), pos_hint={'center_x': .05, 'top': .991}, border=(0, 0, 0, 0) )
         self.esxit_button2.bind(on_press = self.on_exit_click)
-        self.layout.add_widget(self.esxit_button2)
+        #self.layout.add_widget(self.esxit_button2)
     
 
         # Animation
