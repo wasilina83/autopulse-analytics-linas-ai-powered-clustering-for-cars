@@ -295,6 +295,11 @@ class SignalclassifierApp(App):
         self.setup_param_label.text = f'The {self.bat_button_label.text.lower()} is selected'
         self.bat_button_label.coolor = (255, 255, 255, 255)
         self.bat_button_box.coolor = utils.get_color_from_hex('#0046F0')
+        self.bat_button.border_color = utils.get_color_from_hex('#0046F0')  # Ändere die Border-Farbe auf Blau
+        self.bat_button.border = (10, 10, 10, 10)  # Aktiviere die Border
+        
+
+
        
 
     def on_Lichtmaschine_button_click(self, instance):
@@ -302,6 +307,9 @@ class SignalclassifierApp(App):
         self.setup_param_label.text = f'The {self.Lichtmaschine_button_label.text.lower()} is selected'
         self.Lichtmaschine_button_label.coolor = (255, 255, 255, 255)
         self.Lichtmaschine_button_box.coolor = utils.get_color_from_hex('#0046F0')
+        self.Lichtmaschine_button.border_colo = utils.get_color_from_hex('#0046F0')  # Ändere die Border-Farbe auf Blau
+        self.Lichtmaschine_button.border = (1, 1, 1, 1)  # Aktiviere die Border
+        
      
 
 
