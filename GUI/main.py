@@ -174,7 +174,7 @@ class SignalclassifierApp(App):
         self.setup_param_box = CustomLabel(text=f'Komp', size_hint=(None, None), size=(int(Window.width*.625), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .975})
         self.setup_param_label = Label(text=f'Select a vehicle component', size_hint=(None, None), size=(int(Window.width*.625), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.975}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.setup_param_label.bind(on_press=self.on_but_button_click)
-        self.setup_param_label.bind(on_press=self.on_Lichtmaschine_button_click)
+        self.setup_param_label.bind(last_touch=self.hov_button_click)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
         
@@ -182,6 +182,7 @@ class SignalclassifierApp(App):
         self.start_sig = Label(text=f'Custom signal                ', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.play_button2_image = Image(source='GUI/images/play-b.png', size_hint=(None, None), size=(int(Window.height*.1), int(Window.height*.1)), pos_hint={'center_x': 0.68, 'top': 0.208})
         self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.5), (Window.height*.19)), pos_hint={'center_x': 0.59, 'top': 0.288}, border=(0, 0, 0, 0))
+        self.play_button2.bind(on_press=self.on_play_button_click2)
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
         self.layout.add_widget(self.start_sig)
