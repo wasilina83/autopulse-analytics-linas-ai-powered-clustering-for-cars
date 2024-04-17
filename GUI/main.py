@@ -180,7 +180,7 @@ class SignalclassifierApp(App):
         
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=(1, 1, 1, 1))
         self.start_sig = Label(text=f'Custom signal                ', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2_image = Image(source='GUI/images/play-b.png', size_hint=(None, None), size=(int(Window.height*.12), int(Window.height*.12)), pos_hint={'center_x': 0.7, 'top': 0.208})
+        self.play_button2_image = Image(source='GUI/images/play-b.png', size_hint=(None, None), size=(int(Window.height*.1), int(Window.height*.1)), pos_hint={'center_x': 0.65, 'top': 0.208})
         self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.5), (Window.height*.19)), pos_hint={'center_x': 0.59, 'top': 0.288}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
@@ -213,7 +213,7 @@ class SignalclassifierApp(App):
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.339, 'top':  0.908-.15})
+        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.335, 'top':  0.908-.15})
         self.layout.add_widget(self.rem_button_image)
         self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.14)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
