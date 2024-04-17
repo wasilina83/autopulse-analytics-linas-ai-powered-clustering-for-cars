@@ -79,15 +79,15 @@ def generate_custom_waveform_and_plot(funk, amplitude, frequency):
     func_dict={'Batterie': 'sine',
                'Lichtmaschine':'SAWU'}
     
-    signal_functions={'Batterie': sin_sig,
-               'Lichtmaschine':saw_sig}
+    # signal_functions={'Batterie': sin_sig,
+    #            'Lichtmaschine':saw_sig}
     
 
     
     wave_form = func_dict[funk]
     freq = frequency
     ampl = amplitude
-    signal_functions[funk](amplitude, frequency)
+    #signal_functions[funk](amplitude, frequency)
 
     rp_s.tx_txt('GEN:RST')
 

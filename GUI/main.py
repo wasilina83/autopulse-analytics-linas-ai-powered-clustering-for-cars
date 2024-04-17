@@ -48,9 +48,11 @@ class CustomLabel(Label):
         # Initialize the rectangle with graphics instructions
         with self.canvas:
             self.rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[(5, 5), (5, 5), (5,5), (5,5)])
+        Color = self.color
 
         # Update the rectangle when the size or position changes
         self.bind(pos=self.on_size, size=self.on_size)
+    
 
     def on_size(self, *args):
         # Check if the rectangle already exists
@@ -67,6 +69,7 @@ class CustomSlider(Slider):
         # Schedule the creation of graphics instructions on the main thread
         Clock.schedule_once(self.create_graphics_instructions)
     value_track=True
+    border_color=utils.get_color_from_hex('#0046F0')
 
     def create_graphics_instructions(self, dt):
         
@@ -96,6 +99,7 @@ class SignalclassifierApp(App):
         # Create a RelativeLayout as the main layout
         self.layout = RelativeLayout()
         self.signal_type = StringProperty('')
+        self.signal_type = 'Batterie'
 
         # Load the background image
         self.background = Image(source='GUI/images/BG.png', allow_stretch=True, keep_ratio=False)
@@ -173,9 +177,10 @@ class SignalclassifierApp(App):
         self.setup_param_label.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
+        
         self.start_sig_box = CustomLabel(text=f'Gererieren', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=(1, 1, 1, 1))
-        self.start_sig = Label(text=f'Generate custom signal', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.play_button2_image = Image(source='GUI/images/play.png', size_hint=(None, None), size=(int(Window.height*.16), int(Window.height*.16)), pos_hint={'center_x': 0.52, 'top': 0.288})
+        self.start_sig = Label(text=f'Custom signal              ', size_hint=(None, None), size=(int(Window.height*.4), int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.208}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.play_button2_image = Image(source='GUI/images/play-b.png', size_hint=(None, None), size=(int(Window.height*.12), int(Window.height*.12)), pos_hint={'center_x': 0.65, 'top': 0.208})
         self.play_button2 = Button( background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.5), (Window.height*.19)), pos_hint={'center_x': 0.59, 'top': 0.288}, border=(0, 0, 0, 0))
         self.play_button2.bind(on_press=self.on_play_button_click2)
         self.layout.add_widget(self.start_sig_box)
@@ -183,13 +188,13 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.play_button2_image)
         self.layout.add_widget(self.play_button2)
 
-        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .81})
-        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.81}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .85})
+        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.85}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box1)
         self.layout.add_widget(self.setup_param_label1)
-
-        self.setup_param_box2 = CustomLabel(text=f'Or', size_hint=(None, None), size=(int(Window.width*.05), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .7})
-        self.setup_param_label2 = Label(text=f'or', size_hint=(None, None), size=(int(Window.width*.05), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.7}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        
+        self.setup_param_box2 = CustomLabel(text=f'Or', size_hint=(None, None), size=(int(Window.width*.05), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .67})
+        self.setup_param_label2 = Label(text=f'or', size_hint=(None, None), size=(int(Window.width*.05), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.67}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box2)
         self.layout.add_widget(self.setup_param_label2)
 
@@ -204,40 +209,43 @@ class SignalclassifierApp(App):
         # self.layout.add_widget(self.setup_sig_box)
         # self.layout.add_widget(self.setup_sig_label)
         # #Zufals Signal
-        self.rem_sig_label = Label(text=f'Random signal', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.2}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_label = Label(text=f'Random signal        ', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.2}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button_image = Image(source='GUI/images/rem.png', size_hint=(None, None), size=(Window.height*.14, Window.height*.14), pos_hint={'center_x': 0.36, 'top': 0.99-.2})
+        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.35, 'top':  0.908-.2})
         self.layout.add_widget(self.rem_button_image)
         self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.25, 'top': 0.99-.2}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         #Richtiges Signal
-        self.rig_sig_label = Label(text=f'Reference signal', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.9089-.2}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rig_sig_label = Label(text=f'Reference signal        ', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.9089-.2}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.908-.2}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button_image = Image(source='GUI/images/uberprufen.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.648, 'top': 0.99-.2})
+        self.ok_button_image = Image(source='GUI/images/uberprufen-b.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.65, 'top': 0.9089-.2})
         self.layout.add_widget(self.ok_button_image)
         self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.61, 'top': 0.99-.2}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
 
         
-        self.bat_button_label = Label(text=f'Battery', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.092)), pos_hint={'center_x': 0.25, 'top': .92}, color=utils.get_color_from_hex('#0046F0'), font_size='25sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.bat_button_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.092)), pos_hint={'center_x': 0.25, 'top': .92})
+        self.bat_button_label = Label(text=f'Battery', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.062)), pos_hint={'center_x': 0.25, 'top': .92}, color=utils.get_color_from_hex('#0046F0'), font_size='25sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.bat_button_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.062)), pos_hint={'center_x': 0.25, 'top': .92}, color=(255, 255, 255, 255))
+        
         self.layout.add_widget(self.bat_button_box)
         self.layout.add_widget(self.bat_button_label)
-        self.bat_button = Button(background_color=(0,0,0,0), size_hint=(None, None), size=(Window.height*.4, Window.height*.092), pos_hint={'center_x': 0.25, 'top': .92}, color=utils.get_color_from_hex('#0046F0'))
+        self.bat_button = Button(background_color=(0,0,0,0), size_hint=(None, None), size=(Window.height*.4, Window.height*.062), pos_hint={'center_x': 0.25, 'top': .92}, color=utils.get_color_from_hex('#0046F0'))
         self.bat_button.bind(on_press=self.on_but_button_click)
+        self.bat_button_label.bind(on_press=self.on_but_button_click)
+        self.bat_button_box.bind(on_press=self.on_but_button_click)
         self.layout.add_widget(self.bat_button)
         
-        self.Lichtmaschine_button_label = Label(text=f'Alternator', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.092)), pos_hint={'center_x': 0.6, 'top': .92}, color=utils.get_color_from_hex('#0046F0'), font_size='25sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
-        self.Lichtmaschine_button_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.092)), pos_hint={'center_x': 0.6, 'top': .92}, color=(1, 1, 1, 1))
+        self.Lichtmaschine_button_label = Label(text=f'Alternator', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.062)), pos_hint={'center_x': 0.6, 'top': .92}, color=utils.get_color_from_hex('#0046F0'), font_size='25sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.Lichtmaschine_button_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.062)), pos_hint={'center_x': 0.6, 'top': .92}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.Lichtmaschine_button_box)
         self.layout.add_widget(self.Lichtmaschine_button_label)
-        self.Lichtmaschine_button = Button(background_color=(0,0,0,0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.092)), pos_hint={'center_x': 0.6, 'top': .92}, color=utils.get_color_from_hex('#0046F0'))
+        self.Lichtmaschine_button = Button(background_color=(0,0,0,0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.062)), pos_hint={'center_x': 0.6, 'top': .92}, color=utils.get_color_from_hex('#0046F0'))
         self.Lichtmaschine_button.bind(on_press=self.on_Lichtmaschine_button_click)
         self.layout.add_widget(self.Lichtmaschine_button)
         
@@ -259,7 +267,6 @@ class SignalclassifierApp(App):
         self.esxit_button2.bind(on_press = self.on_exit_click)
         #self.layout.add_widget(self.esxit_button2)
     
-
         # Animation
         # Animation for the new background image
         new_animation = Animation(x=0, duration=1)
@@ -286,10 +293,16 @@ class SignalclassifierApp(App):
     def on_but_button_click(self,instance):
         self.signal_type = 'Batterie'
         self.setup_param_label.text = f'The {self.bat_button_label.text.lower()} is selected'
+        self.bat_button_label.coolor = (255, 255, 255, 255)
+        self.bat_button_box.coolor = utils.get_color_from_hex('#0046F0')
+       
 
     def on_Lichtmaschine_button_click(self, instance):
         self.signal_type = 'Lichtmaschine'
         self.setup_param_label.text = f'The {self.Lichtmaschine_button_label.text.lower()} is selected'
+        self.Lichtmaschine_button_label.coolor = (255, 255, 255, 255)
+        self.Lichtmaschine_button_box.coolor = utils.get_color_from_hex('#0046F0')
+     
 
 
     def on_rem_button_click(self, instance):
