@@ -188,8 +188,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.play_button2_image)
         self.layout.add_widget(self.play_button2)
 
-        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .835-.05})
-        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.835-.05}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .835-.025})
+        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.835-.025}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box1)
         self.layout.add_widget(self.setup_param_label1)
         
@@ -209,13 +209,13 @@ class SignalclassifierApp(App):
         # self.layout.add_widget(self.setup_sig_box)
         # self.layout.add_widget(self.setup_sig_label)
         # #Zufals Signal
-        self.rem_sig_label = Label(text=f'Random signal        ', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.rem_sig_label = Label(text=f'Random signal          ', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, color=utils.get_color_from_hex('#0046F0'), font_size='30sp',  font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.35, 'top':  0.908-.15})
+        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.35, 'top':  0.908-.15})
         self.layout.add_widget(self.rem_button_image)
-        self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.25, 'top': 0.99-.15}, border=(0, 0, 0, 0))
+        self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.14)), pos_hint={'center_x': 0.25, 'top': 0.888-.15}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
         self.layout.add_widget(self.rem_button)
         #Richtiges Signal
@@ -223,9 +223,9 @@ class SignalclassifierApp(App):
         self.rig_sig_box = CustomLabel(text=f'sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.6, 'top': 0.908-.15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rig_sig_box)
         self.layout.add_widget(self.rig_sig_label)
-        self.ok_button_image = Image(source='GUI/images/uberprufen-b.png', size_hint=(None, None), size=(Window.height*.12, Window.height*.12), pos_hint={'center_x': 0.68, 'top': 0.9089-.15})
+        self.ok_button_image = Image(source='GUI/images/uberprufen-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.689, 'top': 0.888-.15})
         self.layout.add_widget(self.ok_button_image)
-        self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.22)), pos_hint={'center_x': 0.61, 'top': 0.99-.15}, border=(0, 0, 0, 0))
+        self.ok_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.14)), pos_hint={'center_x': 0.61, 'top': 0.908-.15}, border=(0, 0, 0, 0))
         self.ok_button.bind(on_press=self.on_ok_button_click)
         self.layout.add_widget(self.ok_button)
 
