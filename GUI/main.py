@@ -305,14 +305,14 @@ class SignalclassifierApp(App):
         # Wait for the new GIF to be generated
 
         # Remove the placeholder image and display the new GIF
-        if os.path.exists(old_gif_path):
-            # if self.boby is not None:
-            #     self.layout.remove_widget(self.boby)
-            self.signal_win = Image(source='GUI/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
-            self.layout.add_widget(self.signal_win)
-        self.signal_win.reload()
-        self.sig.source='GUI/images/sg.png'
-        self.sig.reload()
+        # if os.path.exists(old_gif_path):
+        #     # if self.boby is not None:
+        #     #     self.layout.remove_widget(self.boby)
+        #     self.signal_win = Image(source='GUI/images/animation.gif', size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+        #     self.layout.add_widget(self.signal_win)
+        # self.signal_win.reload()
+        # self.sig.source='GUI/images/sg.png'
+        # self.sig.reload()
         
     
     def on_ok_button_click(self, instnce):
@@ -327,14 +327,14 @@ class SignalclassifierApp(App):
             self.signal_win =None
         
         generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
-        if os.path.exists(old_gif_path):
-            # if self.boby is not None:
-            #     self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
-            self.layout.add_widget(self.signal_win)
-        self.signal_win.reload()
-        self.sig.source='GUI/images/sg.png'
-        self.sig.reload()
+        # if os.path.exists(old_gif_path):
+        #     # if self.boby is not None:
+        #     #     self.layout.remove_widget(self.boby)
+        #     self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+        #     self.layout.add_widget(self.signal_win)
+        # self.signal_win.reload()
+        # self.sig.source='GUI/images/sg.png'
+        # self.sig.reload()
         
     def delayed_appearance(self, dt):
         # Start the animation to change the opacity from 0 to 1
@@ -359,12 +359,12 @@ class SignalclassifierApp(App):
             self.signal_win =None
         
         generate_custom_waveform_and_plot(signal_type, amplitude, frequency)
-        if os.path.exists(old_gif_path):
-            # if self.boby is not None:
-            #     self.layout.remove_widget(self.boby)
-            self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
-            self.layout.add_widget(self.signal_win)
-        self.signal_win.reload()
+        # if os.path.exists(old_gif_path):
+        #     # if self.boby is not None:
+        #     #     self.layout.remove_widget(self.boby)
+        #     self.signal_win= Image(source='GUI/images/animation.gif',size_hint=(.5, .5), allow_stretch=True, pos_hint={'center_x': 0.7, 'top': 0.77})
+        #     self.layout.add_widget(self.signal_win)
+        # self.signal_win.reload()
         
         # Function to generate the animation in a separate thread
         # Perform the animation based on the read parameters
