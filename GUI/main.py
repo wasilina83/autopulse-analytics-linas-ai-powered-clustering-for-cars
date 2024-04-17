@@ -213,7 +213,7 @@ class SignalclassifierApp(App):
         self.rem_sig_box = CustomLabel(text=f'zu sig', size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.12)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, color=(1, 1, 1, 1))
         self.layout.add_widget(self.rem_sig_box)
         self.layout.add_widget(self.rem_sig_label)
-        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.347, 'top':  0.908-.15})
+        self.rem_button_image = Image(source='GUI/images/rem-b.png', size_hint=(None, None), size=(Window.height*.1, Window.height*.1), pos_hint={'center_x': 0.339, 'top':  0.908-.15})
         self.layout.add_widget(self.rem_button_image)
         self.rem_button = Button(background_color= (0, 0, 0, 0), size_hint=(None, None), size=(int(Window.height*.4),int(Window.height*.14)), pos_hint={'center_x': 0.25, 'top': 0.908-.15}, border=(0, 0, 0, 0))
         self.rem_button.bind(on_press=self.on_rem_button_click)
