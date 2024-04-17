@@ -74,7 +74,7 @@ def saw_sig(amplitude, frequency):
 
 
 def generate_custom_waveform_and_plot(funk, amplitude, frequency):
-    IP = '169.254.6.100'
+    IP='169.254.6.100'
     rp_s = scpi.scpi(IP)
     func_dict={'Batterie': 'sine',
                'Lichtmaschine':'SAWU'}
