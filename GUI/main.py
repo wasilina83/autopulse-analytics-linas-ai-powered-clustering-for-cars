@@ -188,8 +188,8 @@ class SignalclassifierApp(App):
         self.layout.add_widget(self.play_button2_image)
         self.layout.add_widget(self.play_button2)
 
-        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .835-.025})
-        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.835-.025}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
+        self.setup_param_box1 = CustomLabel(text=f'Gen', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .835-.015})
+        self.setup_param_label1 = Label(text=f'Generate: ', size_hint=(None, None), size=(int(Window.width*.15), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.835-.015}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.layout.add_widget(self.setup_param_box1)
         self.layout.add_widget(self.setup_param_label1)
         
