@@ -11,7 +11,7 @@ import time as t
 import os
 
 def sin_sig(amplitude, frequency):
-    old_gif_path = 'KIVYG/images/animation.gif'
+    old_gif_path = 'GUI/images/animation.gif'
         # Löschen des alten GIF
     if os.path.exists(old_gif_path):
             os.remove(old_gif_path)
@@ -34,14 +34,14 @@ def sin_sig(amplitude, frequency):
         plt.pause(0.00001)
         camera.snap()
     animation = camera.animate()
-    animation.save('KIVYG/images/animation.gif', writer='PillowWriter', fps=.5)
+    animation.save('GUI/images/animation.gif', writer='PillowWriter', fps=.5)
     plt.close(fig)  # Plot schließen, um sicherzustellen, dass er nicht angezeigt wird
     
     return 0
 
 
 def saw_sig(amplitude, frequency):
-    old_gif_path = 'KIVYG/images/animation.gif'
+    old_gif_path = 'GUI/images/animation.gif'
         # Löschen des alten GIF
     if os.path.exists(old_gif_path):
             os.remove(old_gif_path)
@@ -68,26 +68,26 @@ def saw_sig(amplitude, frequency):
         plt.pause(0.00001)
         camera.snap()
     animation = camera.animate()
-    animation.save('KIVYG/images/animation.gif', writer='PillowWriter', fps=.5)
+    animation.save('GUI/images/animation.gif', writer='PillowWriter', fps=.5)
     plt.close(fig)  # Plot schließen, um sicherzustellen, dass er nicht angezeigt wird
     return 0
 
 
 def generate_custom_waveform_and_plot(funk, amplitude, frequency):
-    IP = '192.168.178.38'
+    IP='169.254.6.100'
     rp_s = scpi.scpi(IP)
     func_dict={'Batterie': 'sine',
                'Lichtmaschine':'SAWU'}
     
-    signal_functions={'Batterie': sin_sig,
-               'Lichtmaschine':saw_sig}
+    # signal_functions={'Batterie': sin_sig,
+    #            'Lichtmaschine':saw_sig}
     
 
     
     wave_form = func_dict[funk]
     freq = frequency
     ampl = amplitude
-    signal_functions[funk](amplitude, frequency)
+    #signal_functions[funk](amplitude, frequency)
 
     rp_s.tx_txt('GEN:RST')
 
