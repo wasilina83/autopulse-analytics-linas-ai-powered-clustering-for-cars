@@ -174,7 +174,7 @@ class SignalclassifierApp(App):
         self.setup_param_box = CustomLabel(text=f'Komp', size_hint=(None, None), size=(int(Window.width*.625), int(Window.height*.06)), pos_hint={'center_x': 0.425, 'top': .975})
         self.setup_param_label = Label(text=f'Select a vehicle component', size_hint=(None, None), size=(int(Window.width*.625), int(Window.height*.05)), pos_hint={'center_x': 0.425, 'top': 0.975}, color=utils.get_color_from_hex('#0046F0'), font_size='27sp', font_context='system://myapp', font_name='OpenSans-Bold.ttf')
         self.setup_param_label.bind(on_press=self.on_but_button_click)
-        self.setup_param_label.bind(last_touch=self.hov_button_click)
+        #self.setup_param_label.bind(last_touch=self.hov_button_click)
         self.layout.add_widget(self.setup_param_box)
         self.layout.add_widget(self.setup_param_label)
         
